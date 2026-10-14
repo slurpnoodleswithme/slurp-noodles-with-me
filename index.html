@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Ramen Lab">
+<meta name="description" content="Kalkulatory tare, receptury i narzędzia do skalowania ramenu">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Slurp Noodles With Me — Ramen Lab</title>
@@ -19,6 +20,8 @@
   --accent:#e63946;
   --accent2:#ff6b35;
   --border:#303030;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
@@ -27,11 +30,13 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:env(safe-area-inset-bottom);
   -webkit-text-size-adjust:100%;
 }
 header{
   text-align:center;
   padding:28px 16px 20px;
+  padding-top:calc(28px + var(--safe-top));
   border-bottom:1px solid var(--border);
   cursor:pointer;
 }
@@ -63,6 +68,8 @@ nav::-webkit-scrollbar{display:none;}
   font-size:13.5px;
   flex-shrink:0;
   min-height:44px;
+  display:flex;
+  align-items:center;
 }
 .nav-btn:hover{border-color:var(--accent);}
 .nav-btn.active{background:var(--accent);border-color:var(--accent);color:white;}
@@ -115,6 +122,7 @@ button.calculate{
   cursor:pointer;
   min-height:50px;
   width:100%;
+  -webkit-appearance:none;
 }
 button.calculate:hover{background:#ff4d5a;}
 button.calculate:active{transform:scale(0.98);}
@@ -124,16 +132,24 @@ button.calculate:active{transform:scale(0.98);}
 .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:12px;border-radius:12px;}
 .recipe-table{width:100%;border-collapse:collapse;min-width:280px;}
 .recipe-table th,.recipe-table td{padding:13px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:14.5px;}
-.recipe-table th{color:#aaa;font-size:12.5px;}
-.recipe-table td:last-child,.recipe-table th:last-child{text-align:right;}
+.recipe-table th{color:#aaa;font-size:12.5px;text-transform:uppercase;letter-spacing:0.3px;}
+.recipe-table td:last-child,.recipe-table th:last-child{text-align:right;font-variant-numeric:tabular-nums;}
 .recipe-total{font-weight:bold;color:var(--accent2);}
 .scale-box{display:flex;gap:12px;align-items:end;margin-bottom:18px;}
-.scale-box .field{flex:1;}
+.scale-box .field{flex:1;max-width:none;}
 .scale-box button.calculate{width:auto;min-width:130px;flex-shrink:0;}
 .highlight{background:#101010;border:1px solid #383838;border-radius:12px;padding:16px;margin-top:16px;font-size:14.5px;line-height:1.5;}
 .highlight-title{font-weight:bold;color:var(--accent2);margin-bottom:8px;font-size:15px;}
-footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;color:#666;font-size:13px;}
+footer{
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:28px 16px;
+  padding-bottom:calc(28px + var(--safe-bottom));
+  color:#666;
+  font-size:13px;
+}
 
+/* MOBILE */
 @media (max-width:700px){
   .logo{font-size:22px;}
   .subtitle{font-size:12px;}
@@ -142,11 +158,12 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
   main{padding:16px 12px 90px;}
   .grid{grid-template-columns:1fr;gap:12px;}
   .card{padding:18px 16px;}
-  .calculator{grid-template-columns:1fr;}
+  .calculator{grid-template-columns:1fr;gap:14px;}
   .full{grid-column:auto;}
   .scale-box{flex-direction:column;align-items:stretch;gap:12px;}
   .scale-box button.calculate{width:100%;min-width:auto;}
   .result-value{font-size:28px;}
+  .recipe-table th,.recipe-table td{padding:12px 10px;font-size:14px;}
   nav{padding:8px 10px;gap:5px;}
   .nav-btn{padding:10px 12px;font-size:13px;min-height:42px;}
 }
@@ -154,6 +171,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
   .logo{font-size:19px;}
   h1{font-size:20px;}
   .nav-btn{font-size:12.5px;padding:9px 10px;}
+  .card-icon{font-size:30px;}
 }
 </style>
 </head>
@@ -177,6 +195,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
 </nav>
 
 <main>
+  <!-- START -->
   <section id="home" class="page active">
     <h1>Ramen Lab</h1>
     <p class="intro">Moje miejsce do pracy nad ramenem. Kalkulatory tare, receptury i narzędzia do skalowania.</p>
@@ -224,6 +243,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- SHIO -->
   <section id="shio" class="page">
     <h1>🧂 Shio Tare Calculator</h1>
     <p class="intro">Oblicz ilość tare potrzebną do osiągnięcia wybranego poziomu soli w gotowej misce ramen.</p>
@@ -242,6 +262,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- ORENJI -->
   <section id="orenji" class="page">
     <h1>🍊 Shio Orenji</h1>
     <p class="intro">Tare Shio Orenji 2.0. Receptura bazowa oparta na 3500 ml Katsoubushi dashi.</p>
@@ -255,6 +276,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- YUZU -->
   <section id="yuzu" class="page">
     <h1>🍋 Yuzu Kosho Tare</h1>
     <p class="intro">Tare Yuzu Kosho — skalowanie według ilości Tsuyu.</p>
@@ -268,6 +290,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- SHOYU -->
   <section id="shoyu" class="page">
     <h1>🍶 Golden Shoyu Aojiso</h1>
     <p class="intro">Golden Shoyu Tare z Shiro Tamari, Yamasa Koikuchi, Kousyo Aojiso, Ume su, Choya, Sake, Muscovado, MSG, Niboshi Dashi 10% i solą pomarańczową.</p>
@@ -282,6 +305,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- MISO -->
   <section id="miso" class="page">
     <h1>🥢 Saikyo Pear & Black Garlic Miso</h1>
     <p class="intro">Zbalansowane tare miso na bazie Shiro, Saikyo i Ciemnego Miso, z czarnym czosnkiem, pieczonym czosnkiem, purée z pieczonej gruszki i dodatkami.</p>
@@ -295,6 +319,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- SAKURA SHOYU -->
   <section id="sakura" class="page">
     <h1>🌸 Sakura Shoyu Tare</h1>
     <p class="intro">Delikatna, jasna tare oparta na shiro shoyu, wzbogacona aromatem marynowanych kwiatów sakury, sake i whisky.</p>
@@ -308,6 +333,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- NOODLES -->
   <section id="noodles" class="page">
     <h1>🍜 Makaron Ramen</h1>
     <p class="intro">Autorska kompozycja ciasta na makaron ramen z mąką Nissin Seifun Toka, Manitobą i pełnoziarnistą Caputo Integrale (hydratacja 37,5%).</p>
@@ -321,6 +347,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
     </div>
   </section>
 
+  <!-- RECIPES -->
   <section id="recipes" class="page">
     <h1>📚 Przepisy</h1>
     <p class="intro">Receptury i eksperymenty z Ramen Lab.</p>
@@ -344,82 +371,83 @@ footer{text-align:center;border-top:1px solid var(--border);padding:28px 16px;co
 </footer>
 
 <script>
+// Rejestracja Service Workera (PWA)
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
+  window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
-      .then(function(reg) { console.log('Service Worker zarejestrowany'); })
-      .catch(function(err) { console.log('Błąd SW:', err); });
+      .then(reg => console.log('Service Worker zarejestrowany'))
+      .catch(err => console.log('Błąd SW:', err));
   });
 }
 
 function showPage(pageId, btn){
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
-  var target = document.getElementById(pageId);
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById(pageId);
   if(target) target.classList.add('active');
 
-  document.querySelectorAll('.nav-btn').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   if(btn){
     btn.classList.add('active');
   } else {
-    var matchingBtn = document.getElementById('btn-' + pageId);
+    const matchingBtn = document.getElementById('btn-' + pageId);
     if(matchingBtn) matchingBtn.classList.add('active');
   }
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function parseVal(id){
-  var el = document.getElementById(id);
+  const el = document.getElementById(id);
   if(!el) return 0;
   return parseFloat(el.value.replace(',', '.')) || 0;
 }
 
 function calculateShio(){
-  var broth = parseVal('broth');
-  var brothSalt = parseVal('brothSalt');
-  var tareSalt = parseVal('tareSalt');
-  var finalSalt = parseVal('finalSalt');
-  var res = document.getElementById('shioResult');
+  const broth = parseVal('broth');
+  const brothSalt = parseVal('brothSalt');
+  const tareSalt = parseVal('tareSalt');
+  const finalSalt = parseVal('finalSalt');
+  const res = document.getElementById('shioResult');
   if(broth <= 0 || tareSalt <= finalSalt){ res.textContent = 'Błąd danych'; return; }
-  var tare = broth * (finalSalt - brothSalt) / (tareSalt - finalSalt);
+  const tare = broth * (finalSalt - brothSalt) / (tareSalt - finalSalt);
   res.textContent = tare.toFixed(1) + ' g';
 }
 
-var orenjiData = [
+const orenjiData = [
   {n:'Katsoubushi dashi', b:3500, u:'ml'}, {n:'Cukier', b:297.6, u:'g'},
   {n:'Yuzu ponzu', b:116.5, u:'ml'}, {n:'Shiro shoyu', b:232.2, u:'ml'},
   {n:'Sól pomarańczowa', b:561.8, u:'g'}, {n:'MSG', b:70.1, u:'g'}
 ];
 
 function renderTable(containerId, data, baseVal, userVal){
-  var container = document.getElementById(containerId);
+  const container = document.getElementById(containerId);
   if(!container) return;
-  var ratio = userVal / baseVal;
-  var total = 0;
-  var html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
-  data.forEach(function(item){
-    var val = item.b * ratio;
+  const ratio = userVal / baseVal;
+  let total = 0;
+  let html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
+  data.forEach(item => {
+    const val = item.b * ratio;
     total += val;
-    html += '<tr><td>' + item.n + '</td><td>' + val.toFixed(1) + ' ' + item.u + '</td></tr>';
+    html += `<tr><td>\( {item.n}</td><td> \){val.toFixed(1)} ${item.u}</td></tr>`;
   });
-  html += '</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">' + total.toFixed(1) + ' g</td></tr></tfoot></table>';
+  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${total.toFixed(1)} g</td></tr></tfoot></table>`;
   container.innerHTML = html;
 }
 
 function calculateOrenji(){
-  var val = parseVal('orenjiDashi');
+  const val = parseVal('orenjiDashi');
   if(val > 0) renderTable('orenjiTable', orenjiData, 3500, val);
 }
 
-var yuzuData = [
+const yuzuData = [
   {n:'Tsuyu', b:508, u:'g'}, {n:'Shoyu', b:1525, u:'g'}, {n:'Ponzu Yuzu', b:508, u:'g'},
   {n:'Cukier', b:254, u:'g'}, {n:'Ocet czarny', b:81, u:'g'}, {n:'Yuzu Kosho', b:71, u:'g'}, {n:'MSG', b:51, u:'g'}
 ];
 function calculateYuzu(){
-  var val = parseVal('yuzuTsuyu');
+  const val = parseVal('yuzuTsuyu');
   if(val > 0) renderTable('yuzuTable', yuzuData, 508, val);
 }
 
-var shoyuData = [
+const shoyuData = [
   {n:'Shiro Tamari', b:1470, u:'g', s:0.17}, {n:'Yamasa Koikuchi', b:500, u:'g', s:0.162},
   {n:'Kousyo Aojiso', b:300, u:'g', s:0.0575}, {n:'Ume su Sunfood', b:270, u:'g', s:0.205},
   {n:'Choya', b:300, u:'g', s:0}, {n:'Sake', b:300, u:'g', s:0},
@@ -428,33 +456,34 @@ var shoyuData = [
 ];
 
 function calculateShoyu(){
-  var val = parseVal('shoyuTamari');
+  const val = parseVal('shoyuTamari');
   if(val <= 0) return;
-  var container = document.getElementById('shoyuTable');
-  var ratio = val / shoyuData[0].b;
-  var totW = 0, totS = 0;
-  var html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
-  shoyuData.forEach(function(item){
-    var w = item.b * ratio;
+  const container = document.getElementById('shoyuTable');
+  const ratio = val / shoyuData[0].b;
+  let totW = 0, totS = 0;
+  let html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
+  shoyuData.forEach(item => {
+    const w = item.b * ratio;
     totW += w;
     totS += w * item.s;
-    html += '<tr><td>' + item.n + '</td><td>' + w.toFixed(1) + ' ' + item.u + '</td></tr>';
+    html += `<tr><td>\( {item.n}</td><td> \){w.toFixed(1)} ${item.u}</td></tr>`;
   });
-  html += '</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">' + totW.toFixed(1) + ' g</td></tr></tfoot></table>';
+  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${totW.toFixed(1)} g</td></tr></tfoot></table>`;
   container.innerHTML = html;
 
-  var tareSaltPct = (totS / totW) * 100;
-  var saltInBowl = 40 * (tareSaltPct / 100);
-  var finalSaltPct = (saltInBowl / (354 + 40)) * 100;
+  const tareSaltPct = (totS / totW) * 100;
+  const saltInBowl = 40 * (tareSaltPct / 100);
+  const finalSaltPct = (saltInBowl / (354 + 40)) * 100;
   
-  document.getElementById('shoyuBowlParams').innerHTML = 
-    '<div class="highlight-title">🎯 Parametry jednej miski</div>' +
-    '<strong>354 ml bulionu + 40 ml tare</strong><br>' +
-    'Docelowe zasolenie: <strong>' + finalSaltPct.toFixed(2) + '%</strong><br>' +
-    'Docelowa ilość soli: <strong>' + saltInBowl.toFixed(3) + ' g</strong>';
+  document.getElementById('shoyuBowlParams').innerHTML = `
+    <div class="highlight-title">🎯 Parametry jednej miski</div>
+    <strong>354 ml bulionu + 40 ml tare</strong><br>
+    Docelowe zasolenie: <strong>${finalSaltPct.toFixed(2)}%</strong><br>
+    Docelowa ilość soli: <strong>${saltInBowl.toFixed(3)} g</strong>
+  `;
 }
 
-var misoData = [
+const misoData = [
   {n:'Shiro Miso', b:220, u:'g'}, {n:'Saikyo Miso', b:180, u:'g'}, {n:'Ciemne Miso (Aka)', b:120, u:'g'},
   {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'Pieczony czosnek', b:60, u:'g'},
   {n:'Czarny czosnek', b:50, u:'g'}, {n:'Muscovado', b:35, u:'g'}, {n:'Olej sezamowy', b:30, u:'g'},
@@ -462,35 +491,35 @@ var misoData = [
   {n:'Ocet gruszkowy', b:20, u:'g'}, {n:'Sansho', b:3, u:'g'}
 ];
 function calculateMiso(){
-  var val = parseVal('misoShiro');
+  const val = parseVal('misoShiro');
   if(val > 0) renderTable('misoTable', misoData, 220, val);
 }
 
-var sakuraData = [
+const sakuraData = [
   {n:'Shiro Shoyu', b:978.7, u:'g'}, {n:'Saishikomi Shoyu, Shoda', b:150, u:'g'}, {n:'Zwykłe sake', b:360, u:'g'},
   {n:'Sakura-sake', b:200, u:'g'}, {n:'Whisky Sakura', b:40, u:'g'},
   {n:'Cukier', b:158, u:'g'}, {n:'Ocet wiśniowy', b:56.4, u:'g'},
   {n:'Sól z sakury', b:35, u:'g'}, {n:'Zwykła sól', b:44, u:'g'}, {n:'MSG', b:13.5, u:'g'}
 ];
 function calculateSakura(){
-  var val = parseVal('sakuraTamari');
+  const val = parseVal('sakuraTamari');
   if(val > 0) renderTable('sakuraTable', sakuraData, 978.7, val);
 }
 
-var noodlesData = [
+const noodlesData = [
   {n:'Nissin Seifun Toka No. 1', b:475, u:'g'},
   {n:'Manitoba Oro (Caputo)', b:315, u:'g'},
   {n:'Caputo Integrale (pełnoziarnista)', b:10, u:'g'},
   {n:'Woda niskozmineralizowana', b:300, u:'ml'},
   {n:'Kansui', b:12, u:'g'},
-  {n:'Sól kuchenna', b:12, u:'g''}
+  {n:'Sól kuchenna', b:12, u:'g'}
 ];
 function calculateNoodles(){
-  var val = parseVal('nissinFlour');
+  const val = parseVal('nissinFlour');
   if(val > 0) renderTable('noodlesTable', noodlesData, 475, val);
 }
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
   calculateShio();
   calculateOrenji();
   calculateYuzu();
