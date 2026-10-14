@@ -618,3 +618,51 @@ function calculateShoyu(){
 const misoData = [
   {n:'Shiro Miso', b:220, u:'g'}, {n:'Saikyo Miso', b:180, u:'g'}, {n:'Ciemne Miso (Aka)', b:120, u:'g'},
   {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'
+const misoData = [
+  {n:'Shiro Miso', b:220, u:'g'}, {n:'Saikyo Miso', b:180, u:'g'}, {n:'Ciemne Miso (Aka)', b:120, u:'g'},
+  {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'Pieczony czosnek', b:60, u:'g'},
+  {n:'Czarny czosnek', b:50, u:'g'}, {n:'Muscovado', b:35, u:'g'}, {n:'Olej sezamowy', b:30, u:'g'},
+  {n:'MSG', b:25, u:'g'}, {n:'Imbir świeży', b:20, u:'g'}, {n:'Cukier trzcinowy', b:20, u:'g'},
+  {n:'Ocet gruszkowy', b:20, u:'g'}, {n:'Sansho', b:3, u:'g'}
+];
+function calculateMiso(){
+  const val = parseVal('misoShiro');
+  if(val > 0) renderTable('misoTable', misoData, 220, val);
+}
+
+const sakuraData = [
+  {n:'Shiro Shoyu', b:978.7, u:'g'}, {n:'Saishikomi Shoyu, Shoda', b:150, u:'g'}, {n:'Zwykłe sake', b:360, u:'g'},
+  {n:'Sakura-sake', b:200, u:'g'}, {n:'Whisky Sakura', b:40, u:'g'},
+  {n:'Cukier', b:158, u:'g'}, {n:'Ocet wiśniowy', b:56.4, u:'g'},
+  {n:'Sól z sakury', b:35, u:'g'}, {n:'Zwykła sól', b:44, u:'g'}, {n:'MSG', b:13.5, u:'g'}
+];
+function calculateSakura(){
+  const val = parseVal('sakuraTamari');
+  if(val > 0) renderTable('sakuraTable', sakuraData, 978.7, val);
+}
+
+const noodlesData = [
+  {n:'Nissin Seifun Toka No. 1', b:475, u:'g'},
+  {n:'Manitoba Oro (Caputo)', b:315, u:'g'},
+  {n:'Caputo Integrale (pełnoziarnista)', b:10, u:'g'},
+  {n:'Woda niskozmineralizowana', b:300, u:'ml'},
+  {n:'Kansui', b:12, u:'g'},
+  {n:'Sól kuchenna', b:12, u:'g'}
+];
+function calculateNoodles(){
+  const val = parseVal('nissinFlour');
+  if(val > 0) renderTable('noodlesTable', noodlesData, 475, val);
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  calculateShio();
+  calculateOrenji();
+  calculateYuzu();
+  calculateShoyu();
+  calculateMiso();
+  calculateSakura();
+  calculateNoodles();
+});
+</script>
+</body>
+</html>
