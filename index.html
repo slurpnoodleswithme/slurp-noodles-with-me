@@ -2,7 +2,10 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Slurp Noodles With Me — Ramen Lab</title>
 <style>
 :root{
@@ -13,58 +16,303 @@
   --accent:#e63946;
   --accent2:#ff6b35;
   --border:#303030;
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
 }
-*{box-sizing:border-box;}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;}
-header{text-align:center;padding:35px 20px 25px;border-bottom:1px solid var(--border);cursor:pointer;}
-.logo{font-size:32px;font-weight:900;letter-spacing:1px;}
-.subtitle{color:var(--muted);margin-top:8px;font-size:14px;}
-nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.97);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:8px;padding:10px;overflow-x:auto;}
-.nav-btn{background:#181818;color:#ddd;border:1px solid #303030;border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:14px;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+  -webkit-text-size-adjust:100%;
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:28px 16px 20px;
+  padding-top: calc(28px + var(--safe-top));
+  border-bottom:1px solid var(--border);
+  cursor:pointer;
+}
+.logo{font-size:26px;font-weight:900;letter-spacing:0.5px;line-height:1.2;}
+.subtitle{color:var(--muted);margin-top:6px;font-size:13px;}
+
+/* Navigation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(13,13,13,.97);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:flex-start;
+  gap:6px;
+  padding:10px 12px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+nav::-webkit-scrollbar{display:none;}
+
+.nav-btn{
+  background:#181818;
+  color:#ddd;
+  border:1px solid #303030;
+  border-radius:10px;
+  padding:11px 14px;
+  cursor:pointer;
+  white-space:nowrap;
+  font-size:13.5px;
+  flex-shrink:0;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
 .nav-btn:hover{border-color:var(--accent);}
-.nav-btn.active{background:var(--accent);border-color:var(--accent);color:white;}
-main{max-width:1100px;margin:auto;padding:25px 18px 60px;}
+.nav-btn.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
+}
+
+/* Main */
+main{
+  max-width:1100px;
+  margin:auto;
+  padding:20px 14px 80px;
+}
 .page{display:none;}
 .page.active{display:block;}
-h1{font-size:30px;margin-top:10px;}
-h2, h3{margin-top:0;}
-.intro{color:var(--muted);line-height:1.6;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:25px;}
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;cursor:pointer;transition:.2s;}
-.card:hover{transform:translateY(-3px);border-color:var(--accent);}
-.card-icon{font-size:38px;margin-bottom:12px;}
-.card h3{margin-bottom:8px;}
-.card p{color:var(--muted);line-height:1.5;font-size:14px;}
-.lab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:20px;}
-.calculator{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.field{display:flex;flex-direction:column;gap:7px;}
-.field label{color:#ccc;font-size:14px;}
-.field input{width:100%;background:#0b0b0b;color:white;border:1px solid #383838;border-radius:10px;padding:13px;font-size:16px;outline:none;}
+
+h1{font-size:26px;margin:8px 0 12px;line-height:1.25;}
+h2{font-size:19px;margin:0 0 14px;}
+h3{margin-top:0;font-size:17px;}
+
+.intro{color:var(--muted);line-height:1.55;font-size:15px;margin-bottom:8px;}
+
+/* Cards grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  cursor:pointer;
+  transition:.2s;
+  min-height:140px;
+}
+.card:hover{transform:translateY(-2px);border-color:var(--accent);}
+.card:active{transform:scale(0.98);}
+.card-icon{font-size:34px;margin-bottom:10px;}
+.card h3{margin-bottom:6px;font-size:16.5px;}
+.card p{color:var(--muted);line-height:1.45;font-size:13.5px;margin:0;}
+
+/* Lab card */
+.lab-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin-top:16px;
+}
+
+/* Calculator */
+.calculator{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{color:#ccc;font-size:13.5px;}
+.field input{
+  width:100%;
+  background:#0b0b0b;
+  color:white;
+  border:1px solid #383838;
+  border-radius:10px;
+  padding:14px 12px;
+  font-size:16px; /* ważne – zapobiega zoomowi na iOS */
+  outline:none;
+  min-height:48px;
+}
 .field input:focus{border-color:var(--accent);}
 .full{grid-column:1/-1;}
-button.calculate{background:var(--accent);color:white;border:0;border-radius:10px;padding:14px 20px;font-weight:bold;font-size:15px;cursor:pointer;}
+
+button.calculate{
+  background:var(--accent);
+  color:white;
+  border:0;
+  border-radius:12px;
+  padding:15px 18px;
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  min-height:50px;
+  width:100%;
+  -webkit-appearance:none;
+}
 button.calculate:hover{background:#ff4d5a;}
-.result{margin-top:20px;background:#0a0a0a;border:1px solid var(--border);border-radius:14px;padding:20px;}
-.result-label{color:var(--muted);margin-bottom:6px;}
-.result-value{font-size:34px;font-weight:900;}
-.recipe-table{width:100%;border-collapse:collapse;margin-top:15px;}
-.recipe-table th,.recipe-table td{padding:12px 10px;border-bottom:1px solid var(--border);text-align:left;}
-.recipe-table th{color:#aaa;font-size:13px;}
-.recipe-table td:last-child,.recipe-table th:last-child{text-align:right;}
+button.calculate:active{transform:scale(0.98);}
+
+/* Result */
+.result{
+  margin-top:18px;
+  background:#0a0a0a;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+}
+.result-label{color:var(--muted);margin-bottom:4px;font-size:14px;}
+.result-value{font-size:32px;font-weight:900;line-height:1.2;}
+
+/* Tables */
+.table-wrapper{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  margin-top:12px;
+  border-radius:12px;
+}
+.recipe-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:280px;
+}
+.recipe-table th,
+.recipe-table td{
+  padding:13px 12px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:14.5px;
+}
+.recipe-table th{color:#aaa;font-size:12.5px;text-transform:uppercase;letter-spacing:0.3px;}
+.recipe-table td:last-child,
+.recipe-table th:last-child{text-align:right;font-variant-numeric:tabular-nums;}
 .recipe-total{font-weight:bold;color:var(--accent2);}
-.scale-box{display:flex;gap:12px;align-items:end;margin-bottom:20px;}
-.scale-box .field{max-width:300px;}
-.info{background:#141414;border-left:4px solid var(--accent);padding:14px 16px;border-radius:8px;margin:20px 0;color:#ccc;line-height:1.6;}
+
+/* Scale box */
+.scale-box{
+  display:flex;
+  gap:12px;
+  align-items:end;
+  margin-bottom:18px;
+}
+.scale-box .field{flex:1;max-width:none;}
+.scale-box button.calculate{width:auto;min-width:130px;flex-shrink:0;}
+
+/* Info & highlight */
+.info{
+  background:#141414;
+  border-left:4px solid var(--accent);
+  padding:14px 16px;
+  border-radius:8px;
+  margin:18px 0;
+  color:#ccc;
+  line-height:1.55;
+  font-size:14.5px;
+}
 .info strong{color:white;}
-.highlight{background:#101010;border:1px solid #383838;border-radius:12px;padding:16px;margin-top:18px;}
-.highlight-title{font-weight:bold;color:var(--accent2);margin-bottom:8px;}
-footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;color:#666;font-size:13px;}
-@media(max-width:700px){
-  .calculator{grid-template-columns:1fr;}
+.highlight{
+  background:#101010;
+  border:1px solid #383838;
+  border-radius:12px;
+  padding:16px;
+  margin-top:16px;
+  font-size:14.5px;
+  line-height:1.5;
+}
+.highlight-title{font-weight:bold;color:var(--accent2);margin-bottom:8px;font-size:15px;}
+
+/* Footer */
+footer{
+  text-align:center;
+  border-top:1px solid var(--border);
+  padding:28px 16px;
+  padding-bottom: calc(28px + var(--safe-bottom));
+  color:#666;
+  font-size:13px;
+}
+
+/* ========== MOBILE OPTIMIZATION ========== */
+@media (max-width:700px){
+  .logo{font-size:22px;}
+  .subtitle{font-size:12px;}
+  
+  h1{font-size:22px;}
+  h2{font-size:17px;}
+  
+  main{padding:16px 12px 90px;}
+  
+  .grid{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  
+  .card{
+    padding:18px 16px;
+    min-height:auto;
+  }
+  
+  .calculator{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  
   .full{grid-column:auto;}
-  .scale-box{flex-direction:column;align-items:stretch;}
-  .scale-box .field{max-width:none;}
+  
+  .scale-box{
+    flex-direction:column;
+    align-items:stretch;
+    gap:12px;
+  }
+  
+  .scale-box button.calculate{
+    width:100%;
+    min-width:auto;
+  }
+  
+  .result-value{font-size:28px;}
+  
+  .recipe-table th,
+  .recipe-table td{
+    padding:12px 10px;
+    font-size:14px;
+  }
+  
+  nav{
+    padding:8px 10px;
+    gap:5px;
+  }
+  
+  .nav-btn{
+    padding:10px 12px;
+    font-size:13px;
+    min-height:42px;
+  }
+}
+
+/* Bardzo małe telefony */
+@media (max-width:380px){
+  .logo{font-size:19px;}
+  h1{font-size:20px;}
+  .nav-btn{font-size:12.5px;padding:9px 10px;}
+  .card-icon{font-size:30px;}
+}
+
+/* Landscape phones */
+@media (max-width:900px) and (orientation:landscape){
+  header{padding:16px 12px 12px;}
+  .logo{font-size:20px;}
 }
 </style>
 </head>
@@ -142,10 +390,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <p class="intro">Oblicz ilość tare potrzebną do osiągnięcia wybranego poziomu soli w gotowej misce ramen.</p>
     <div class="lab-card">
       <div class="calculator">
-        <div class="field"><label>Broth — ml</label><input id="broth" type="text" value="354"></div>
-        <div class="field"><label>Broth salt — %</label><input id="brothSalt" type="text" value="0"></div>
-        <div class="field"><label>Tare salt — %</label><input id="tareSalt" type="text" value="15,75"></div>
-        <div class="field"><label>Desired final bowl salt — %</label><input id="finalSalt" type="text" value="1,60"></div>
+        <div class="field"><label>Broth — ml</label><input id="broth" type="text" inputmode="decimal" value="354"></div>
+        <div class="field"><label>Broth salt — %</label><input id="brothSalt" type="text" inputmode="decimal" value="0"></div>
+        <div class="field"><label>Tare salt — %</label><input id="tareSalt" type="text" inputmode="decimal" value="15,75"></div>
+        <div class="field"><label>Desired final bowl salt — %</label><input id="finalSalt" type="text" inputmode="decimal" value="1,60"></div>
         <div class="full"><button class="calculate" onclick="calculateShio()">CALCULATE TARE</button></div>
       </div>
       <div class="result">
@@ -162,10 +410,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Katsoubushi dashi — ml</label><input id="orenjiDashi" type="text" value="3500"></div>
+        <div class="field"><label>Katsoubushi dashi — ml</label><input id="orenjiDashi" type="text" inputmode="decimal" value="3500"></div>
         <button class="calculate" onclick="calculateOrenji()">PRZELICZ</button>
       </div>
-      <div id="orenjiTable"></div>
+      <div class="table-wrapper"><div id="orenjiTable"></div></div>
     </div>
   </section>
 
@@ -176,10 +424,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Tsuyu — g</label><input id="yuzuTsuyu" type="text" value="508"></div>
+        <div class="field"><label>Tsuyu — g</label><input id="yuzuTsuyu" type="text" inputmode="decimal" value="508"></div>
         <button class="calculate" onclick="calculateYuzu()">PRZELICZ</button>
       </div>
-      <div id="yuzuTable"></div>
+      <div class="table-wrapper"><div id="yuzuTable"></div></div>
     </div>
   </section>
 
@@ -190,10 +438,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Shiro Tamari — g</label><input id="shoyuTamari" type="text" value="1470"></div>
+        <div class="field"><label>Shiro Tamari — g</label><input id="shoyuTamari" type="text" inputmode="decimal" value="1470"></div>
         <button class="calculate" onclick="calculateShoyu()">PRZELICZ</button>
       </div>
-      <div id="shoyuTable"></div>
+      <div class="table-wrapper"><div id="shoyuTable"></div></div>
       <div class="highlight" id="shoyuBowlParams"></div>
     </div>
   </section>
@@ -205,10 +453,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Shiro Miso — g</label><input id="misoShiro" type="text" value="220"></div>
+        <div class="field"><label>Shiro Miso — g</label><input id="misoShiro" type="text" inputmode="decimal" value="220"></div>
         <button class="calculate" onclick="calculateMiso()">PRZELICZ</button>
       </div>
-      <div id="misoTable"></div>
+      <div class="table-wrapper"><div id="misoTable"></div></div>
     </div>
   </section>
 
@@ -219,10 +467,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Shiro Shoyu — g</label><input id="sakuraTamari" type="text" value="978.7"></div>
+        <div class="field"><label>Shiro Shoyu — g</label><input id="sakuraTamari" type="text" inputmode="decimal" value="978.7"></div>
         <button class="calculate" onclick="calculateSakura()">PRZELICZ</button>
       </div>
-      <div id="sakuraTable"></div>
+      <div class="table-wrapper"><div id="sakuraTable"></div></div>
     </div>
   </section>
 
@@ -233,10 +481,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
-        <div class="field"><label>Nissin Seifun Toka No. 1 — g</label><input id="nissinFlour" type="text" value="475"></div>
+        <div class="field"><label>Nissin Seifun Toka No. 1 — g</label><input id="nissinFlour" type="text" inputmode="decimal" value="475"></div>
         <button class="calculate" onclick="calculateNoodles()">PRZELICZ</button>
       </div>
-      <div id="noodlesTable"></div>
+      <div class="table-wrapper"><div id="noodlesTable"></div></div>
     </div>
   </section>
 
@@ -245,8 +493,16 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     <h1>📚 Przepisy</h1>
     <p class="intro">Receptury i eksperymenty z Ramen Lab.</p>
     <div class="grid">
-      <div class="card" onclick="showPage('noodles', document.getElementById('btn-noodles'))"><div class="card-icon">🍜</div><h3>Makaron</h3><p>Receptura na ciasto makaronowe (Nissin Toka + Manitoba + Integrale).</p></div>
-      <div class="card"><div class="card-icon">🧂</div><h3>Tare</h3><p>Shio, Shoyu, Miso oraz specjalne tare.</p></div>
+      <div class="card" onclick="showPage('noodles', document.getElementById('btn-noodles'))">
+        <div class="card-icon">🍜</div>
+        <h3>Makaron</h3>
+        <p>Receptura na ciasto makaronowe (Nissin Toka + Manitoba + Integrale).</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧂</div>
+        <h3>Tare</h3>
+        <p>Shio, Shoyu, Miso oraz specjalne tare.</p>
+      </div>
     </div>
   </section>
 </main>
@@ -361,50 +617,4 @@ function calculateShoyu(){
 
 const misoData = [
   {n:'Shiro Miso', b:220, u:'g'}, {n:'Saikyo Miso', b:180, u:'g'}, {n:'Ciemne Miso (Aka)', b:120, u:'g'},
-  {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'Pieczony czosnek', b:60, u:'g'},
-  {n:'Czarny czosnek', b:50, u:'g'}, {n:'Muscovado', b:35, u:'g'}, {n:'Olej sezamowy', b:30, u:'g'},
-  {n:'MSG', b:25, u:'g'}, {n:'Imbir świeży', b:20, u:'g'}, {n:'Cukier trzcinowy', b:20, u:'g'},
-  {n:'Ocet gruszkowy', b:20, u:'g'}, {n:'Sansho', b:3, u:'g'}
-];
-function calculateMiso(){
-  const val = parseVal('misoShiro');
-  if(val > 0) renderTable('misoTable', misoData, 220, val);
-}
-
-const sakuraData = [
-  {n:'Shiro Shoyu', b:978.7, u:'g'}, {n:'Saishikomi Shoyu, Shoda', b:150, u:'g'}, {n:'Zwykłe sake', b:360, u:'g'},
-  {n:'Sakura-sake', b:200, u:'g'}, {n:'Whisky Sakura', b:40, u:'g'},
-  {n:'Cukier', b:158, u:'g'}, {n:'Ocet wiśniowy', b:56.4, u:'g'},
-  {n:'Sól z sakury', b:35, u:'g'}, {n:'Zwykła sól', b:44, u:'g'}, {n:'MSG', b:13.5, u:'g'}
-];
-function calculateSakura(){
-  const val = parseVal('sakuraTamari');
-  if(val > 0) renderTable('sakuraTable', sakuraData, 978.7, val);
-}
-
-const noodlesData = [
-  {n:'Nissin Seifun Toka No. 1', b:475, u:'g'},
-  {n:'Manitoba Oro (Caputo)', b:315, u:'g'},
-  {n:'Caputo Integrale (pełnoziarnista)', b:10, u:'g'},
-  {n:'Woda niskozmineralizowana', b:300, u:'ml'},
-  {n:'Kansui', b:12, u:'g'},
-  {n:'Sól kuchenna', b:12, u:'g'}
-];
-function calculateNoodles(){
-  const val = parseVal('nissinFlour');
-  if(val > 0) renderTable('noodlesTable', noodlesData, 475, val);
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  calculateShio();
-  calculateOrenji();
-  calculateYuzu();
-  calculateShoyu();
-  calculateMiso();
-  calculateSakura();
-  calculateNoodles();
-});
-</script>
-</body>
-  </html>
-  
+  {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'
