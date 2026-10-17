@@ -389,7 +389,32 @@ function calculateOrenji(){
 }
 
 const yuzuData = [
-  {n:'Tsuyu', b:508, u:'g'}, {n:'Shoyu', b:1525, u:'g'}, {n:'Ocet czarny', b:81, u:'g'}, {n:'Yuzu Kosho', b:71, u:'g'}, {n:'MSG', b:51, u:'g'}
+  {n:'Tsuyu', b:508, u:'g'}, {n:'Shoyu', b:1525, u:'g'}, {n:'MSG', b:70.1, u:'g'}
+];
+
+function renderTable(containerId, data, baseVal, userVal){
+  const container = document.getElementById(containerId);
+  if(!container) return;
+  const ratio = userVal / baseVal;
+  let total = 0;
+  let html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
+  data.forEach(item => {
+    const val = item.b * ratio;
+    total += val;
+    html += `<tr><td>${item.n}</td><td>${val.toFixed(1)} ${item.u}</td></tr>`;
+  });
+  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${total.toFixed(1)} g</td></tr></tfoot></table>`;
+  container.innerHTML = html;
+}
+
+function calculateOrenji(){
+  const val = parseVal('orenjiDashi');
+  if(val > 0) renderTable('orenjiTable', orenjiData, 3500, val);
+}
+
+const yuzuData = [
+  {n:'Tsuyu', b:508, u:'g'}, {n:'Shoyu', b:1525, u:'g'}, {n:'Ponzu Yuzu', b:508, u:'g'},
+  {n:'Cukier', b:254, u:'g'}, {n:'Ocet czarny', b:81, u:'g'}, {n:'Yuzu Kosho', b:71, u:'g'}, {n:'MSG', b:51, u:'g'}
 ];
 function calculateYuzu(){
   const val = parseVal('yuzuTsuyu');
