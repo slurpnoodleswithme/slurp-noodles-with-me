@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Slurp Noodles With Me — Ramen Lab</title> 
-<meta name="google-site-verification" content="mIUNgpylF8jxWr-WPNHBvnLS0SQJkxv55hKrOR0jfak" />
+<title>Slurp Noodles With Me — Ramen Lab</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#e63946">
 <link rel="apple-touch-icon" href="icon.png">
@@ -89,6 +88,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
   <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shoyu</button>
   <button id="btn-noodles" class="nav-btn" onclick="showPage('noodles',this)">🍜 Makaron</button>
   <button id="btn-kimchi" class="nav-btn" onclick="showPage('kimchi',this)">🌿 Kimchi</button>
+  <button id="btn-catering" class="nav-btn" onclick="showPage('catering',this)">🍣 Catering Sushi</button>
   <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
 </nav>
 
@@ -137,6 +137,11 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
         <div class="card-icon">🌿</div>
         <h3>Kimchi z czosnkiem niedźwiedzim</h3>
         <p>Autorska kiszonka z czosnkiem niedźwiedzim, uszakiem bzowym i gochugaru.</p>
+      </div>
+      <div class="card" onclick="showPage('catering', document.getElementById('btn-catering'))">
+        <div class="card-icon">🍣</div>
+        <h3>Catering Sushi & Omakase</h3>
+        <p>Profesjonalna obsługa sushi na Twojej imprezie okolicznościowej, bankiecie lub evencie firmowym.</p>
       </div>
       <div class="card" onclick="showPage('recipes', document.getElementById('btn-recipes'))">
         <div class="card-icon">📚</div>
@@ -276,6 +281,33 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
       <div class="info" style="margin-top: 25px;">
         <strong>Notatki z laboratóriów:</strong><br>
         Uszaki bzowe w tej kiszonce wychodzą dużo smaczniejsze (według mnie 😉), niż te uzyskanie podczas tradycyjnej fermentacji w solance. No i całość kimchi jest zjawiskowo czosnkowa. Niby trudno się dziwić 😊, ale mimo wszystko można się zaskoczyć aromatem. Dodatkowo mój nastaw, koniec końców, pozostał z dużą dawką słodyczy. Jak na kiszonkę, oczywiście. 😉 Co tu dużo mówić / pisać. Jest to opcja, która zdecydowanie wskakuje na podium moich fermentacji. Do dzieła! 😊 Smacznego. 🍀🍴💚
+      </div>
+    </div>
+  </section>
+
+  <!-- CATERING & EVENTS -->
+  <section id="catering" class="page">
+    <h1>🍣 Private Dining & Catering Sushi</h1>
+    <p class="intro">Profesjonalny serwis sushi oraz live-cooking na imprezach okolicznościowych, bankietach i kameralnych przyjęciach.</p>
+    <div class="lab-card">
+      <h2>Osobisty Sushi Chef na Twoim Wydarzeniu</h2>
+      <p style="color: #ccc; line-height: 1.7;">
+        Planujesz urodziny, przyjęcie prywatne, kameralne spotkanie z przyjaciółmi czy event firmowy? Oferuję kompleksową obsługę cateringową nakierowaną na najwyższą jakość, świeżość i autentyczność japońskiej sztuki kulinarnej. Każde menu komponuję indywidualnie, dopasowując je do charakteru wydarzenia oraz preferencji gości.
+      </p>
+
+      <h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
+      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+        <li><strong>Zestawy sushi na zamówienie:</strong> Elegancko skomponowane płaskowyże i zestawy na Twoje przyjęcie (Nigiri, Hosomaki, Futomaki, Uramaki, Sashimi).</li>
+        <li><strong>Live-Cooking & Omakase:</strong> Pokaz przygotowywania sushi na żywo na Twoim evencie — unikalne doświadczenie kulinarne i widowisko dla gości.</li>
+        <li><strong>Autorskie dodatki & parowanie smaków:</strong> Rzemieślnicze dodatki, unikalne sosy tare oraz autorskie fermentacje (shio koji, garum, kimchi).</li>
+        <li><strong>Personalizowane menu:</strong> Opcje tradycyjne (ryby i owoce morza najwyższej klasy) oraz nowoczesne warianty wegetariańskie / roślinne.</li>
+      </ul>
+
+      <div class="info" style="margin-top: 25px;">
+        <strong>Rezerwacje i zapytania:</strong><br>
+        Aby omówić termin, menu oraz szczegóły Twojego wydarzenia, skontaktuj się ze mną bezpośrednio:<br>
+        📧 E-mail: <strong>marcin.bogdan91@gmail.com</strong><br>
+        📍 Obszar: Łódź, województwo łódzkie oraz dojazd na eventy po wcześniejszym ustaleniu.
       </div>
     </div>
   </section>
