@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Slurp Noodles With Me — Ramen Lab & Catering Sushi Łódź</title>
-<meta name="description" content="Ramen Lab — autorskie receptury na tare, domowy makaron ramen, kimchi z czosnkiem niedźwiedzim oraz profesjonalny catering sushi i live-cooking omakase w Łodzi.">
-<meta name="keywords" content="ramen, tare, makaron ramen, domowy makaron, shio, shoyu, miso, catering sushi, sushi Łódź, omakase, live-cooking, sushi chef, #tare, #ramen, #makaronramen">
+<meta name="description" content="Ramen Lab — autorskie receptury na tare, domowy makaron ramen, kimchi z czosnkiem niedźwiedzim, skrzydełka a'la KFC oraz profesjonalny catering sushi i live-cooking omakase w Łodzi.">
+<meta name="keywords" content="ramen, tare, makaron ramen, domowy makaron, shio, shoyu, miso, skrzydełka KFC, karaage, catering sushi, sushi Łódź, omakase, live-cooking, sushi chef, #tare, #ramen, #makaronramen">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#e63946">
 <link rel="apple-touch-icon" href="icon.png">
@@ -25,23 +25,23 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica
 header{text-align:center;padding:35px 20px 25px;border-bottom:1px solid var(--border);cursor:pointer;}
 .logo{font-size:32px;font-weight:900;letter-spacing:1px;}
 .subtitle{color:var(--muted);margin-top:8px;font-size:14px;}
-nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.97);border-bottom:1px solid var(--border);display:flex;justify-content:center;gap:8px;padding:10px;overflow-x:auto;}
-.nav-btn{background:#181818;color:#ddd;border:1px solid #303030;border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:14px;}
+nav{position:sticky;top:0;z-index:100;background:rgba(13,13,13,.97);border-bottom:1px solid var(--border);display:flex;justify-content:flex-start;gap:8px;padding:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav-btn{background:#181818;color:#ddd;border:1px solid #303030;border-radius:10px;padding:10px 14px;cursor:pointer;white-space:nowrap;font-size:14px;flex-shrink:0;}
 .nav-btn:hover{border-color:var(--accent);}
 .nav-btn.active{background:var(--accent);border-color:var(--accent);color:white;}
-main{max-width:1100px;margin:auto;padding:25px 18px 60px;}
+main{max-width:1100px;margin:auto;padding:25px 18px 220px;}
 .page{display:none;}
 .page.active{display:block;}
 h1{font-size:30px;margin-top:10px;}
 h2, h3{margin-top:0;}
 .intro{color:var(--muted);line-height:1.6;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:25px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:25px;margin-bottom:40px;}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;cursor:pointer;transition:.2s;}
 .card:hover{transform:translateY(-3px);border-color:var(--accent);}
 .card-icon{font-size:38px;margin-bottom:12px;}
 .card h3{margin-bottom:8px;}
 .card p{color:var(--muted);line-height:1.5;font-size:14px;}
-.lab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:20px;}
+.lab-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-top:20px;margin-bottom:60px;}
 .calculator{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .field{display:flex;flex-direction:column;gap:7px;}
 .field label{color:#ccc;font-size:14px;}
@@ -66,12 +66,13 @@ button.calculate:hover{background:#ff4d5a;}
 .highlight-title{font-weight:bold;color:var(--accent2);margin-bottom:8px;}
 .tags-cloud{margin-top:20px;color:var(--muted);font-size:13px;line-height:1.8;}
 .tags-cloud span{color:var(--accent2);margin-right:8px;}
-footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;color:#666;font-size:13px;}
+footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 100px;color:#666;font-size:13px;}
 @media(max-width:700px){
   .calculator{grid-template-columns:1fr;}
   .full{grid-column:auto;}
   .scale-box{flex-direction:column;align-items:stretch;}
   .scale-box .field{max-width:none;}
+  main{padding-bottom:220px;}
 }
 </style>
 </head>
@@ -92,6 +93,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
   <button id="btn-sakura" class="nav-btn" onclick="showPage('sakura',this)">🌸 Sakura Shoyu</button>
   <button id="btn-noodles" class="nav-btn" onclick="showPage('noodles',this)">🍜 Makaron</button>
   <button id="btn-kimchi" class="nav-btn" onclick="showPage('kimchi',this)">🌿 Kimchi</button>
+  <button id="btn-wings" class="nav-btn" onclick="showPage('wings',this)">🍗 Skrzydełka</button>
   <button id="btn-catering" class="nav-btn" onclick="showPage('catering',this)">🍣 Catering Sushi</button>
   <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
 </nav>
@@ -100,10 +102,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
   <!-- START -->
   <section id="home" class="page active">
     <h1>Ramen Lab & Sushi Catering</h1>
-    <p class="intro">Autorskie laboratorium smaku: precyzyjne kalkulatory tare, rzemieślnicze przepisy na domowy makaron ramen oraz profesjonalny serwis sushi i live-cooking w Łodzi.</p>
+    <p class="intro">Autorskie laboratorium smaku: precyzyjne kalkulatory tare, rzemieślnicze przepisy na domowy makaron ramen, chrupiące skrzydełka a'la KFC oraz profesjonalny serwis sushi i live-cooking w Łodzi.</p>
     
     <div class="tags-cloud">
-      <span>#ramen</span> <span>#tare</span> <span>#makaronramen</span> <span>#shio</span> <span>#shoyu</span> <span>#miso</span> <span>#sushi</span> <span>#omakase</span> <span>#catering</span> <span>#livecooking</span> <span>#kuchniajapońska</span> <span>#łódź</span>
+      <span>#ramen</span> <span>#tare</span> <span>#makaronramen</span> <span>#shio</span> <span>#shoyu</span> <span>#miso</span> <span>#skrzydełkaKFC</span> <span>#karaage</span> <span>#sushi</span> <span>#omakase</span> <span>#catering</span> <span>#livecooking</span> <span>#kuchniajapońska</span> <span>#łódź</span>
     </div>
 
     <div class="grid">
@@ -147,6 +149,11 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
         <h3>Kimchi z czosnkiem niedźwiedzim</h3>
         <p>Autorska kiszonka z czosnkiem niedźwiedzim, uszakiem bzowym i gochugaru.</p>
       </div>
+      <div class="card" onclick="showPage('wings', document.getElementById('btn-wings'))">
+        <div class="card-icon">🍗</div>
+        <h3>Skrzydełka a'la KFC</h3>
+        <p>Chrupiące skrzydełka w marynacie do karaage i sosie kimchi.</p>
+      </div>
       <div class="card" onclick="showPage('catering', document.getElementById('btn-catering'))">
         <div class="card-icon">🍣</div>
         <h3>Catering Sushi & Omakase</h3>
@@ -155,7 +162,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
       <div class="card" onclick="showPage('recipes', document.getElementById('btn-recipes'))">
         <div class="card-icon">📚</div>
         <h3>Przepisy</h3>
-        <p>Kompletne receptury na ramen, tare, oleje i autorskie fermentacje.</p>
+        <p>Kompletne receptury na ramen, tare, oleje, skrzydełka i autorskie fermentacje.</p>
       </div>
     </div>
   </section>
@@ -294,6 +301,50 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
     </div>
   </section>
 
+  <!-- WINGS -->
+  <section id="wings" class="page">
+    <h1>🍗 Skrzydełka a'la KFC</h1>
+    <p class="intro">Chrupiące skrzydełka w japońskiej marynacie karaage z sosem kimchi. Idealnie soczyste w środku, z ultra-chrupiącą panierką.</p>
+    
+    <div class="lab-card">
+      <h2>Kalkulator Marynaty do Karaage</h2>
+      <p class="intro">Zmienną bazową jest ilość sosu sojowego (baza: 300 ml sosu sojowego).</p>
+      <div class="scale-box">
+        <div class="field"><label>Sos sojowy — ml</label><input id="soySauceWings" type="text" value="300"></div>
+        <button class="calculate" onclick="calculateWingsMarinade()">PRZELICZ MARYNATĘ</button>
+      </div>
+      <div id="wingsMarinadeTable"></div>
+
+      <h2 style="margin-top: 30px;">Składniki bazowe na potrawę</h2>
+      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+        <li><strong>1 kg</strong> skrzydełek drobiowych</li>
+        <li><strong>400 ml</strong> marynaty do karaage</li>
+        <li><strong>500 ml</strong> sosu kimchi</li>
+        <li><strong>200 ml</strong> wody (temperatura płynna)</li>
+        <li><strong>Panierka:</strong> Mieszanka mąki pszennej oraz skrobi ziemniaczanej (proporcja 1:1)</li>
+      </ul>
+
+      <h2 style="margin-top: 25px;">Przygotowanie i krok po kroku</h2>
+      <p style="color: #ccc; line-height: 1.6;">
+        1. <strong>Podział skrzydełek:</strong> Każde skrzydełko dokładnie dzielimy na 3 części na stawach:
+      </p>
+      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+        <li>Część ramienna (drumette)</li>
+        <li>Część przedramienna (wingette)</li>
+        <li>Trzecia część — „lotka” (odkładamy ją na boku — nie marynujemy jej, idealnie nada się do dorzucenia do wywaru na dashi lub bulion ramen)</li>
+      </ul>
+      <p style="color: #ccc; line-height: 1.6;">
+        2. <strong>Marynowanie:</strong> Wrzucamy przygotowaną część ramienną oraz przedramienną do marynaty karaage (połączonej z sosem kimchi) i odstawiamy na minimum kilka godzin do lodówki.<br>
+        3. <strong>Panierowanie i smażenie:</strong> Tuż przed smażeniem dokładnie i obficie obtaczamy skrzydełka w mieszance mąki pszennej i skrobi ziemniaczanej. Smażymy na głębokim, dobrze rozgrzanym oleju do uzyskania złocistego koloru i chrupkości!
+      </p>
+
+      <div class="info" style="margin-top: 25px;">
+        <strong>Wskazówka z laboratorium:</strong><br>
+        Mieszanka mąki pszennej i skrobi ziemniaczanej daje charakterystyczną, bardzo chrupiącą postrzępioną panierkę w stylu KFC, a ponzu i imbir w marynacie do karaage zmiękczają mięso i nadają mu wyrazisty umami akcent!
+      </div>
+    </div>
+  </section>
+
   <!-- CATERING & EVENTS -->
   <section id="catering" class="page">
     <h1>🍣 Private Dining & Catering Sushi</h1>
@@ -304,7 +355,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
         Planujesz urodziny, przyjęcie prywatne, kameralne spotkanie z przyjaciółmi czy event firmowy? Oferuję kompleksową obsługę cateringową nakierowaną na najwyższą jakość, świeżość i autentyczność japońskiej sztuki kulinarnej. Każde menu komponuję indywidualnie, dopasowując je do charakteru wydarzenia oraz preferencji gości.
       </p>
 
-      <h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
+    h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
       <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
         <li><strong>Zestawy sushi na zamówienie:</strong> Elegancko skomponowane półmiski i zestawy na Twoje przyjęcie (Nigiri, Hosomaki, Futomaki, Uramaki, Sashimi).</li>
         <li><strong>Live-Cooking & Omakase:</strong> Pokaz przygotowywania sushi na żywo na Twoim evencie — unikalne doświadczenie kulinarne i widowisko dla gości.</li>
@@ -329,6 +380,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px;co
       <div class="card" onclick="showPage('noodles', document.getElementById('btn-noodles'))"><div class="card-icon">🍜</div><h3>Makaron</h3><p>Receptura na ciasto makaronowe (Nissin Toka + Manitoba + Integrale).</p></div>
       <div class="card"><div class="card-icon">🧂</div><h3>Tare</h3><p>Shio, Shoyu, Miso oraz specjalne tare.</p></div>
       <div class="card" onclick="showPage('kimchi', document.getElementById('btn-kimchi'))"><div class="card-icon">🌿</div><h3>Kimchi z czosnkiem niedźwiedzim</h3><p>Autorska kiszonka z uszakiem bzowym, gochugaru i nutą słodyczy.</p></div>
+      <div class="card" onclick="showPage('wings', document.getElementById('btn-wings'))"><div class="card-icon">🍗</div><h3>Skrzydełka a'la KFC</h3><p>Skrzydełka w marynacie karaage, sosie kimchi i chrupiącej panierce.</p></div>
     </div>
   </section>
 </main>
@@ -387,7 +439,7 @@ function renderTable(containerId, data, baseVal, userVal){
     total += val;
     html += `<tr><td>${item.n}</td><td>${val.toFixed(1)} ${item.u}</td></tr>`;
   });
-  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${total.toFixed(1)} g</td></tr></tfoot></table>`;
+  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${total.toFixed(1)} ${data[0].u}</td></tr></tfoot></table>`;
   container.innerHTML = html;
 }
 
@@ -477,6 +529,19 @@ function calculateNoodles(){
   if(val > 0) renderTable('noodlesTable', noodlesData, 475, val);
 }
 
+const wingsData = [
+  {n:'Sos sojowy', b:300, u:'ml'},
+  {n:'Sake', b:100, u:'ml'},
+  {n:'Ponzu', b:100, u:'ml'},
+  {n:'Olej sezamowy', b:100, u:'ml'},
+  {n:'Imbir tarty', b:1, u:'kciuk'},
+  {n:'Czosnek blend', b:1, u:'łyżka'}
+];
+function calculateWingsMarinade(){
+  const val = parseVal('soySauceWings');
+  if(val > 0) renderTable('wingsMarinadeTable', wingsData, 300, val);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   calculateShio();
   calculateOrenji();
@@ -485,6 +550,7 @@ window.addEventListener('DOMContentLoaded', () => {
   calculateMiso();
   calculateSakura();
   calculateNoodles();
+  calculateWingsMarinade();
 });
 </script>
 <script>
