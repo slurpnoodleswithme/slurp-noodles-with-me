@@ -1,24 +1,26 @@
 {
   "short_name": "RAMEN LAB",
   "name": "Slurp Noodles With Me - Ramen Lab",
+  "description": "Autorskie laboratorium smaku: precyzyjne kalkulatory tare, rzemieślnicze przepisy na domowy makaron ramen, chrupiące skrzydełka a'la KFC oraz profesjonalny serwis sushi i live-cooking w Łodzi.",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "https://slurpnoodleswithme.github.io/slurp-noodles-with-me/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon-512.png",
+      "src": "https://slurpnoodleswithme.github.io/slurp-noodles-with-me/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/slurp-noodles-with-me/",
-  "scope": "/slurp-noodles-with-me/",
+  "start_url": "https://slurpnoodleswithme.github.io/slurp-noodles-with-me/",
+  "scope": "https://slurpnoodleswithme.github.io/slurp-noodles-with-me/",
   "background_color": "#121212",
   "theme_color": "#121212",
   "display": "standalone",
   "orientation": "portrait"
 }
+
