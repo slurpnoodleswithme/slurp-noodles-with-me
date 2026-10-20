@@ -1,1 +1,9 @@
-.well-known/assetlinks.json
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "io.github.slurpnoodleswithme.twa",
+    "sha256_cert_fingerprints":
+    ["30:CC:E7:F2:CE:34:BC:4B:DC:B2:FB:7B:9C:A4:90:EE:C1:0B:64:BF:AE:88:DF:5F:E6:4E:3E:7B:B6:45:C0:DC"]
+  }
+}]
