@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<link rel="canonical"
 <!-- PWA Manifest & Meta -->
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#121212">
@@ -85,7 +84,6 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
 </style>
 </head>
 <body>
-
 <header onclick="showPage('home')">
   <div class="logo">🍜 SLURP NOODLES WITH ME</div>
   <div class="subtitle">RAMEN LAB — TARE • RECIPES • CALCULATORS • SUSHI CATERING</div>
@@ -240,7 +238,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
   <!-- MISO -->
   <section id="miso" class="page">
     <h1>🥢 Saikyo Pear & Black Garlic Miso</h1>
-    <p class="intro">Zbalansowane tare miso na bazie Shiro, Saikyo i Ciemnego Miso, z czarnym czosnkiem, pieczonym czosnkiem, purée z pieczonej gruszki i dodatkami.</p>
+    <p class="intro">Miso Tare z trzema rodzajami miso, pieczoną gruszką, czarnym czosnkiem i przyprawami.</p>
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
@@ -251,10 +249,10 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
     </div>
   </section>
 
-  <!-- SAKURA SHOYU -->
+  <!-- SAKURA -->
   <section id="sakura" class="page">
-    <h1>🌸 Sakura Shoyu Tare</h1>
-    <p class="intro">Delikatna, jasna tare oparta na shiro shoyu, wzbogacona aromatem marynowanych kwiatów sakury, sake i whisky.</p>
+    <h1>🌸 Sakura Shoyu</h1>
+    <p class="intro">Delikatna, jasna tare oparta na shiro shoyu z aromatem kwiatów sakury, sake i whisky.</p>
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
@@ -268,7 +266,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
   <!-- NOODLES -->
   <section id="noodles" class="page">
     <h1>🍜 Makaron Ramen</h1>
-    <p class="intro">Autorska kompozycja ciasta na domowy makaron ramen z mąką Nissin Seifun Toka, Manitobą i pełnoziarnistą Caputo Integrale (hydratacja 37,5%).</p>
+    <p class="intro">Autorska kompozycja ciasta na domowy makaron ramen z mąką Nissin Seifun Toka, Manitobą i pełnoziarnistą Caputo Integrale (hydratacja 37,5%, kansui 1,0%).</p>
     <div class="lab-card">
       <h2>Skalowanie receptury</h2>
       <div class="scale-box">
@@ -363,7 +361,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
         Planujesz urodziny, przyjęcie prywatne, kameralne spotkanie z przyjaciółmi czy event firmowy? Oferuję kompleksową obsługę cateringową nakierowaną na najwyższą jakość, świeżość i autentyczność japońskiej sztuki kulinarnej. Każde menu komponuję indywidualnie, dopasowując je do charakteru wydarzenia oraz preferencji gości.
       </p>
 
-    <h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
+      <h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
       <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
         <li><strong>Zestawy sushi na zamówienie:</strong> Elegancko skomponowane półmiski i zestawy na Twoje przyjęcie (Nigiri, Hosomaki, Futomaki, Uramaki, Sashimi).</li>
         <li><strong>Live-Cooking & Omakase:</strong> Pokaz przygotowywania sushi na żywo na Twoim evencie — unikalne doświadczenie kulinarne i widowisko dla gości.</li>
@@ -396,7 +394,6 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
 <footer>
   SLURP NOODLES WITH ME — RAMEN LAB & SUSHI CATERING<br>© 2026 Marcin Bogdan
 </footer>
-
 <script>
 function showPage(pageId, btn){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -529,7 +526,7 @@ const noodlesData = [
   {n:'Manitoba Oro (Caputo)', b:315, u:'g'},
   {n:'Caputo Integrale (pełnoziarnista)', b:10, u:'g'},
   {n:'Woda niskozmineralizowana', b:300, u:'ml'},
-  {n:'Kansui', b:12, u:'g'},
+  {n:'Kansui', b:8, u:'g'},
   {n:'Sól kuchenna', b:12, u:'g'}
 ];
 function calculateNoodles(){
@@ -570,6 +567,5 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 </script>
-
 </body>
 </html>
