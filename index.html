@@ -580,7 +580,9 @@ window.addEventListener('DOMContentLoaded', () => {
 <script>
  if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
+  const basePath = window.location.pathname.includes('/slurp-noodles-with-me') ? '/slurp-noodles-with-me' : '';
+navigator.serviceWorker.register(basePath + '/sw.js')
+
         .then(reg => console.log('Service Worker zarejestrowany!'))
         .catch(err => console.log('Błąd SW:', err));
     });
