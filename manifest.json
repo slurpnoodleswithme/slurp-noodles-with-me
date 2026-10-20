@@ -1,5 +1,4 @@
-{
-  "short_name": "RAMEN LAB",
+ "short_name": "RAMEN LAB",
   "name": "Slurp Noodles With Me - Ramen Lab",
   "icons": [
     {
@@ -21,4 +20,3 @@
   "theme_color": "#121212",
   "display": "standalone",
   "orientation": "portrait"
-}
