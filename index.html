@@ -14,15 +14,10 @@
 <meta name="twitter:title" content="Slurp Noodles With Me — Ramen Lab & Sushi Catering">
 <meta name="twitter:description" content="Autorskie kalkulatory tare, rzemieślnicze przepisy na makaron ramen, kimchi i catering sushi w Łodzi.">
 <meta name="twitter:image" content="https://slurpnoodleswithme.github.io/slurp-noodles-with-me/icon-512.png">
-  
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://slurpnoodleswithme.github.io/slurp-noodles-with-me/">
-<meta name="twitter:title" content="Slurp Noodles With Me — Ramen Lab & Sushi Catering">
-<meta name="twitter:description" content="Autorskie kalkulatory tare, rzemieślnicze przepisy na makaron ramen, kimchi i catering sushi w Łodzi.">
-<meta name="twitter:image" content="https://slurpnoodleswithme.github.io/slurp-noodles-with-me/icon.png">
+
 <!-- PWA Manifest & Meta -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#121212">
+<meta name="theme-color" content="#e63946">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="RAMEN LAB">
@@ -32,9 +27,7 @@
 <title>Slurp Noodles With Me — Ramen Lab & Catering Sushi Łódź</title>
 <meta name="description" content="Ramen Lab — autorskie receptury na tare, domowy makaron ramen, kimchi z czosnkiem niedźwiedzim, skrzydełka a'la KFC oraz profesjonalny catering sushi i live-cooking omakase w Łodzi.">
 <meta name="keywords" content="ramen, tare, makaron ramen, domowy makaron, shio, shoyu, miso, skrzydełka KFC, karaage, catering sushi, sushi Łódź, omakase, live-cooking, sushi chef, #tare, #ramen, #makaronramen">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#e63946">
-<link rel="apple-touch-icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon-512.png">
 <style>
 :root{
   --bg:#0d0d0d;
@@ -76,6 +69,8 @@ h2, h3{margin-top:0;}
 .full{grid-column:1/-1;}
 button.calculate{background:var(--accent);color:white;border:0;border-radius:10px;padding:14px 20px;font-weight:bold;font-size:15px;cursor:pointer;}
 button.calculate:hover{background:#ff4d5a;}
+.back-btn{background:#222;color:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;margin-bottom:15px;}
+.back-btn:hover{background:var(--accent);}
 .result{margin-top:20px;background:#0a0a0a;border:1px solid var(--border);border-radius:14px;padding:20px;}
 .result-label{color:var(--muted);margin-bottom:6px;}
 .result-value{font-size:34px;font-weight:900;}
@@ -119,6 +114,7 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
   <button id="btn-noodles" class="nav-btn" onclick="showPage('noodles',this)">🍜 Makaron</button>
   <button id="btn-kimchi" class="nav-btn" onclick="showPage('kimchi',this)">🌿 Kimchi</button>
   <button id="btn-wings" class="nav-btn" onclick="showPage('wings',this)">🍗 Skrzydełka</button>
+  <button id="btn-ponzu" class="nav-btn" onclick="showPage('ponzu',this)">🍋 Yuzu Ponzu</button>
   <button id="btn-catering" class="nav-btn" onclick="showPage('catering',this)">🍣 Catering Sushi</button>
   <button id="btn-recipes" class="nav-btn" onclick="showPage('recipes',this)">📚 Przepisy</button>
 </nav>
@@ -179,6 +175,11 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
         <h3>Skrzydełka a'la KFC</h3>
         <p>Chrupiące skrzydełka w marynacie do karaage i sosie kimchi.</p>
       </div>
+      <div class="card" onclick="showPage('ponzu', document.getElementById('btn-ponzu'))">
+        <div class="card-icon">🍋</div>
+        <h3>Sos Yuzu Ponzu</h3>
+        <p>Aromatyczny, cytrusowy sos ponzu o głębokim profilu umami (wersja restauracyjna).</p>
+      </div>
       <div class="card" onclick="showPage('catering', document.getElementById('btn-catering'))">
         <div class="card-icon">🍣</div>
         <h3>Catering Sushi & Omakase</h3>
@@ -191,7 +192,6 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
       </div>
     </div>
   </section>
-
   <!-- SHIO -->
   <section id="shio" class="page">
     <h1>🧂 Shio Tare Calculator</h1>
@@ -351,78 +351,23 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
 
       <h2 style="margin-top: 25px;">Przygotowanie i krok po kroku</h2>
       <p style="color: #ccc; line-height: 1.6;">
-        1. <strong>Podział skrzydełek:</strong> Każde skrzydełko dokładnie dzielimy na 3 części na stawach:
+        1. <strong>Podział skrzydełek:</strong> Każde skrzydełko dokładnie dzielimy na 3 części na stawach: część ramienną (drumette), część przedramienną (flat) oraz lotkę (którą można odrzucić lub zachować na wywar).<br>
+        2. <strong>Maceracja:</strong> Pokrojone skrzydełka przekładamy do naczynia i zalewamy wcześniej przygotowaną marynatą karaage. Wstawiamy do lodówki na minimum 4–6 godzin (najlepiej na całą noc).<br>
+        3. <strong>Przygotowanie panierki i kąpieli:</strong> W osobnej misce przygotowujemy suchą panierkę (mąka pszenna połączona ze skrobią ziemniaczaną w proporcji 1:1). W drugiej misce łączymy sos kimchi z wodą.<br>
+        4. <strong>Podwójne panierowanie (Secret KFC Method):</strong> Skrzydełka wyjmujemy z marynaty, obtaczamy dokładnie w suchej mące, następnie na sekundę zanurzamy w mieszance sosu kimchi z wodą i ponownie dokładnie obtaczamy w mące, lekko dociskając.<br>
+        5. <strong>Smażenie:</strong> Smażymy na głębokim oleju nagrzanym do temperatury 165–170°C przez około 8–10 minut, aż panierka stanie się złocista i niezwykle chrupiąca.
       </p>
-      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
-        <li>Część ramienna (drumette)</li>
-        <li>Część przedramienna (wingette)</li>
-        <li>Trzecia część — „lotka” (odkładamy ją na boku — nie marynujemy jej, idealnie nada się do dorzucenia do wywaru na dashi lub bulion ramen)</li>
-      </ul>
-      <p style="color: #ccc; line-height: 1.6;">
-        2. <strong>Marynowanie:</strong> Wrzucamy przygotowaną część ramienną oraz przedramienną do marynaty karaage (połączonej z sosem kimchi) i odstawiamy na minimum kilka godzin do lodówki.<br>
-        3. <strong>Panierowanie i smażenie:</strong> Tuż przed smażeniem dokładnie i obficie obtaczamy skrzydełka w mieszance mąki pszennej i skrobi ziemniaczanej. Smażymy na głębokim, dobrze rozgrzanym oleju do uzyskania złocistego koloru i chrupkości!
-      </p>
-
-      <div class="info" style="margin-top: 25px;">
-        <strong>Wskazówka z laboratorium:</strong><br>
-        Mieszanka mąki pszennej i skrobi ziemniaczanej daje charakterystyczną, bardzo chrupiącą postrzępioną panierkę w stylu KFC, a ponzu i imbir w marynacie do karaage zmiękczają mięso i nadają mu wyrazisty umami akcent!
-      </div>
     </div>
   </section>
-
-  <!-- CATERING & EVENTS -->
-  <section id="catering" class="page">
-    <h1>🍣 Private Dining & Catering Sushi</h1>
-    <p class="intro">Profesjonalny serwis sushi oraz live-cooking na imprezach okolicznościowych, bankietach i kameralnych przyjęciach.</p>
-    <div class="lab-card">
-      <h2>Osobisty Sushi Chef na Twoim Wydarzeniu</h2>
-      <p style="color: #ccc; line-height: 1.7;">
-        Planujesz urodziny, przyjęcie prywatne, kameralne spotkanie z przyjaciółmi czy event firmowy? Oferuję kompleksową obsługę cateringową nakierowaną na najwyższą jakość, świeżość i autentyczność japońskiej sztuki kulinarnej. Każde menu komponuję indywidualnie, dopasowując je do charakteru wydarzenia oraz preferencji gości.
-      </p>
-
-      <h3 style="margin-top: 25px; color: var(--accent2);">Co oferuję?</h3>
-      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
-        <li><strong>Zestawy sushi na zamówienie:</strong> Elegancko skomponowane półmiski i zestawy na Twoje przyjęcie (Nigiri, Hosomaki, Futomaki, Uramaki, Sashimi).</li>
-        <li><strong>Live-Cooking & Omakase:</strong> Pokaz przygotowywania sushi na żywo na Twoim evencie — unikalne doświadczenie kulinarne i widowisko dla gości.</li>
-        <li><strong>Autorskie dodatki & parowanie smaków:</strong> Rzemieślnicze dodatki, unikalne sosy tare oraz autorskie fermentacje (shio koji, garum, kimchi).</li>
-        <li><strong>Personalizowane menu:</strong> Opcje tradycyjne (ryby i owoce morza najwyższej klasy) oraz nowoczesne warianty wegetariańskie / roślinne.</li>
-      </ul>
-
-      <div class="info" style="margin-top: 25px;">
-        <strong>Rezerwacje i zapytania:</strong><br>
-        Aby omówić termin, menu oraz szczegóły Twojego wydarzenia, skontaktuj się ze mną bezpośrednio:<br>
-        📧 E-mail: <strong>marcin.bogdan91@gmail.com</strong><br>
-        📍 Obszar: Łódź, województwo łódzkie oraz dojazd na eventy po wcześniejszym ustaleniu.
-      </div>
-    </div>
-  </section>
-
-  <!-- RECIPES -->
-  <section id="recipes" class="page">
-    <h1>📚 Przepisy</h1>
-    <p class="intro">Receptury i eksperymenty z Ramen Lab.</p>
-    <div class="grid">
-      <div class="card" onclick="showPage('noodles', document.getElementById('btn-noodles'))"><div class="card-icon">🍜</div><h3>Makaron</h3><p>Receptura na ciasto makaronowe (Nissin Toka + Manitoba + Integrale).</p></div>
-      <div class="card"><div class="card-icon">🧂</div><h3>Tare</h3><p>Shio, Shoyu, Miso oraz specjalne tare.</p></div>
-      <div class="card" onclick="showPage('kimchi', document.getElementById('btn-kimchi'))"><div class="card-icon">🌿</div><h3>Kimchi z czosnkiem niedźwiedzim</h3><p>Autorska kiszonka z uszakiem bzowym, gochugaru i nutą słodyczy.</p></div>
-      <div class="card" onclick="showPage('wings', document.getElementById('btn-wings'))"><div class="card-icon">🍗</div><h3>Skrzydełka a'la KFC</h3><p>Skrzydełka w marynacie karaage, sosie kimchi i chrupiącej panierce.</p></div>
-    </div>
-     <div class="card" onclick="showPage('ponzu', this)">
-        <div class="card-icon">🍋</div>
-        <h3>Sos Yuzu Ponzu</h3>
-        <p>Aromatyczny, cytrusowy sos ponzu o głębokim profilu umami (wersja restauracyjna).</p>
-          </div>
-  </section>
-    <!-- Podstrona z pełnym przepisem na Yuzu Ponzu -->
-  <section id="ponzu" class="page" style="display: none;">
+  <!-- YUZU PONZU RECIPE PAGE -->
+  <section id="ponzu" class="page">
     <button class="back-btn" onclick="showPage('recipes')">← Powrót do przepisów</button>
-    
     <h2>🍋 Sos Yuzu Ponzu — Wersja Restauracyjna (1 Litr)</h2>
     <p class="intro">Aromatyczny, zbalansowany sos ponzu o głębokim profilu umami i cytrusowej świeżości yuzu. Idealny do sashimi, gyōzy, tataki oraz jako baza do dressingów i tare.</p>
 
-    <div class="calculator-card">
+    <div class="lab-card">
       <h3>Składniki (na ~1 Litr)</h3>
-      <ul>
+      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
         <li><strong>50 ml</strong> syropu z yuzu</li>
         <li><strong>50 ml</strong> koncentratu z yuzu</li>
         <li><strong>400 ml</strong> jasnego sosu sojowego (japoński <em>Usukuchi Shoyu</em> lub klasyczny <em>Shoyu</em>)</li>
@@ -433,27 +378,81 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
         <li><strong>1 łyżka</strong> cukru trzcinowego</li>
       </ul>
 
-      <h3>Sposób przygotowania</h3>
-      <ol style="padding-left: 20px; line-height: 1.6;">
+      <h3 style="margin-top: 25px;">Sposób przygotowania</h3>
+      <ol style="color: #ccc; line-height: 1.8; padding-left: 20px;">
         <li><strong>Łączenie bazy:</strong> Do garnka wlej wszystkie składniki płynne: syrop yuzu, koncentrat yuzu, sos sojowy, mirin oraz ocet ponzu.</li>
         <li><strong>Dodanie umami i słodyczy:</strong> Włóż do garnka kawałki kombu oraz dodaj cukier muscovado i cukier trzcinowy. Całość wymieszaj.</li>
-        <li><strong>Maceracja na ciepło:</strong> Podgrzewaj na bardzo małym ogniu przez kilka minut. <em>Nie doprowadzaj do wrzenia!</em></li>
+        <li><strong>Maceracja na ciepło:</strong> Podgrzewaj na bardzo małym ogniu przez kilka minut. <em>Nie doprowadzaj do wrzenia!</em> Zbyt wysoka temperatura uwalnia z kombu gorzkie nuty.</li>
         <li><strong>Ekstrakcja smaku:</strong> Zdejmij garnek z ognia i odstaw do ostygnięcia na 30–60 minut.</li>
         <li><strong>Filtrowanie:</strong> Wyjmij kombu, a sos przecedź przez gęste sitko lub gazę do wyparzonej butelki.</li>
         <li><strong>Dojrzewanie:</strong> Przechowuj w lodówce. Pełny profil smakowy osiąga po 24 godzinach.</li>
       </ol>
     </div>
   </section>
-  </main>
+
+  <!-- CATERING -->
+  <section id="catering" class="page">
+    <h1>🍣 Catering Sushi & Omakase Łódź</h1>
+    <p class="intro">Szukasz wyjątkowej oprawy kulinarnej na swoje wydarzenie? Oferuję kompleksową obsługę cateringową w zakresie kuchni japońskiej na terenie Łodzi i województwa łódzkiego.</p>
+    
+    <div class="lab-card">
+      <h2>Zakres Usług</h2>
+      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
+        <li><strong>Prywatne Kolacje Omakase:</strong> Ekskluzywny serwis na żywo (live-cooking) w Twoim domu.</li>
+        <li><strong>Zestawy Cateringowe & Zestawy Eventowe:</strong> Świeżo przygotowane rolki nigiri, futomaki, uramaki oraz sashimi z certyfikowanych ryb najwyższej jakości.</li>
+        <li><strong>Pop-up Ramen & Live Cooking:</strong> Stacja gotowania świeżego ramenu na wydarzeniach firmowych i prywatnych.</li>
+      </ul>
+
+      <div class="highlight">
+        <div class="highlight-title">Kontakt i rezerwacje</div>
+        <strong>Rezerwacje i zapytania:</strong><br>
+        Aby omówić termin, menu oraz szczegóły Twojego wydarzenia, skontaktuj się ze mną bezpośrednio:<br>
+        ✉️ E-mail: <strong>marcin.bogdan91@gmail.com</strong><br>
+        📍 Obszar: Łódź, województwo łódzkie oraz cała Polska (po wcześniejszym ustaleniu).
+      </div>
+    </div>
+  </section>
+
+  <!-- RECIPES -->
+  <section id="recipes" class="page">
+    <h1>📚 Przepisy</h1>
+    <p class="intro">Receptury i eksperymenty z Ramen Lab</p>
+    <div class="grid">
+      <div class="card" onclick="showPage('noodles', document.getElementById('btn-noodles'))">
+        <div class="card-icon">🍜</div>
+        <h3>Makaron Ramen</h3>
+        <p>Autorskie ciasto na domowy makaron z mąk Nissin Seifun Toka No. 1, Manitoba i Integrale.</p>
+      </div>
+      <div class="card" onclick="showPage('kimchi', document.getElementById('btn-kimchi'))">
+        <div class="card-icon">🌿</div>
+        <h3>Kimchi z czosnkiem niedźwiedzim</h3>
+        <p>Autorska kiszonka z czosnkiem niedźwiedzim, uszakiem bzowym i gochugaru.</p>
+      </div>
+      <div class="card" onclick="showPage('wings', document.getElementById('btn-wings'))">
+        <div class="card-icon">🍗</div>
+        <h3>Skrzydełka a'la KFC</h3>
+        <p>Chrupiące skrzydełka w marynacie do karaage i sosie kimchi.</p>
+      </div>
+      <div class="card" onclick="showPage('ponzu', document.getElementById('btn-ponzu'))">
+        <div class="card-icon">🍋</div>
+        <h3>Sos Yuzu Ponzu</h3>
+        <p>Aromatyczny, cytrusowy sos ponzu o głębokim profilu umami (wersja restauracyjna).</p>
+      </div>
+    </div>
+  </section>
+</main>
+
 <footer>
-  SLURP NOODLES WITH ME — RAMEN LAB & SUSHI CATERING<br>© 2026 Marcin Bogdan
+  SLURP NOODLES WITH ME — RAMEN LAB & SUSHI CATERING ŁÓDŹ
 </footer>
+
 <script>
 function showPage(pageId, btn){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById(pageId);
   if(target) target.classList.add('active');
- document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   if(btn){
     btn.classList.add('active');
   } else {
@@ -470,137 +469,176 @@ function parseVal(id){
 }
 
 function calculateShio(){
-  const broth = parseVal('broth');
-  const brothSalt = parseVal('brothSalt');
-  const tareSalt = parseVal('tareSalt');
-  const finalSalt = parseVal('finalSalt');
-  const res = document.getElementById('shioResult');
-  if(broth <= 0 || tareSalt <= finalSalt){ res.textContent = 'Błąd danych'; return; }
-  const tare = broth * (finalSalt - brothSalt) / (tareSalt - finalSalt);
-  res.textContent = tare.toFixed(1) + ' g';
-}
+  const B = parseVal('broth');
+  const Sb = parseVal('brothSalt') / 100;
+  const St = parseVal('tareSalt') / 100;
+  const Sf = parseVal('finalSalt') / 100;
 
-const orenjiData = [
-  {n:'Katsoubushi dashi', b:3500, u:'ml'}, {n:'Cukier', b:297.6, u:'g'},
-  {n:'Yuzu ponzu', b:116.5, u:'ml'}, {n: 'Shiro shoyu', b:232.2, u:'ml'},
-  {n:'Sól pomarańczowa', b:561.8, u:'g'}, {n:'MSG', b:70.1, u:'g'}
-];
-
-function renderTable(containerId, data, baseVal, userVal){
-  const container = document.getElementById(containerId);
-  if(!container) return;
-  const ratio = userVal / baseVal;
-  let total = 0;
-  let html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
-  data.forEach(item => {
-    const val = item.b * ratio;
-    total += val;
-    html += `<tr><td>${item.n}</td><td>${val.toFixed(1)} ${item.u}</td></tr>`;
-  });
-  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${total.toFixed(1)} ${data[0].u}</td></tr></tfoot></table>`;
-  container.innerHTML = html;
+  if(St <= Sf){
+    document.getElementById('shioResult').innerText = "Błąd: Sól w tare musi być wyższa niż docelowa!";
+    return;
+  }
+  const T = (B * (Sf - Sb)) / (St - Sf);
+  document.getElementById('shioResult').innerText = T.toFixed(1) + " g";
 }
 
 function calculateOrenji(){
-  const val = parseVal('orenjiDashi');
-  if(val > 0) renderTable('orenjiTable', orenjiData, 3500, val);
+  const baseDashi = 3500;
+  const dashi = parseVal('orenjiDashi');
+  const ratio = dashi / baseDashi;
+
+  const items = [
+    { name: "Katsoubushi dashi", val: 3500 * ratio, unit: "ml" },
+    { name: "Sól", val: 560 * ratio, unit: "g" },
+    { name: "Sake", val: 350 * ratio, unit: "ml" },
+    { name: "Mirin", val: 350 * ratio, unit: "ml" },
+    { name: "Jabłko", val: 1 * ratio, unit: "szt" },
+    { name: "Sok z pomarańczy", val: 350 * ratio, unit: "ml" },
+    { name: "Kombu", val: 35 * ratio, unit: "g" },
+    { name: "Czosnek", val: 35 * ratio, unit: "g" },
+    { name: "Imbir", val: 35 * ratio, unit: "g" },
+    { name: "Ocet ryżowy", val: 70 * ratio, unit: "ml" }
+  ];
+
+  renderTable('orenjiTable', items);
 }
 
-const yuzuData = [
-  {n:'Tsuyu', b:508, u:'g'}, {n:'Shoyu', b:1525, u:'g'}, {n:'Ponzu Yuzu', b:508, u:'g'},
-  {n:'Cukier', b:254, u:'g'}, {n:'Ocet czarny', b:81, u:'g'}, {n:'Yuzu Kosho', b:71, u:'g'}, {n:'MSG', b:51, u:'g'}
-];
 function calculateYuzu(){
-  const val = parseVal('yuzuTsuyu');
-  if(val > 0) renderTable('yuzuTable', yuzuData, 508, val);
-}
+  const baseTsuyu = 508;
+  const tsuyu = parseVal('yuzuTsuyu');
+  const ratio = tsuyu / baseTsuyu;
 
-const shoyuData = [
-  {n:'Shiro Tamari', b:1470, u:'g', s:0.17}, {n:'Yamasa Koikuchi', b:500, u:'g', s:0.162},
-  {n:'Kousyo Aojiso', b:300, u:'g', s:0.0575}, {n:'Ume su Sunfood', b:270, u:'g', s:0.205},
-  {n:'Choya', b:300, u:'g', s:0}, {n:'Sake', b:300, u:'g', s:0},
-  {n:'Muscovado', b:150, u:'g', s:0}, {n:'MSG', b:85, u:'g', s:0},
-  {n:'Niboshi Dashi 10%', b:280, u:'g', s:0}, {n:'Sól pomarańczowa', b:158, u:'g', s:1.0}
-];
+  const items = [
+    { name: "Tsuyu", val: 508 * ratio, unit: "g" },
+    { name: "Sok z cytryny", val: 140 * ratio, unit: "g" },
+    { name: "Yuzu kosho", val: 70 * ratio, unit: "g" },
+    { name: "Sól", val: 90 * ratio, unit: "g" },
+    { name: "Cukier", val: 20 * ratio, unit: "g" },
+    { name: "Sake", val: 50 * ratio, unit: "g" }
+  ];
+
+  renderTable('yuzuTable', items);
+}
 
 function calculateShoyu(){
-  const val = parseVal('shoyuTamari');
-  if(val <= 0) return;
-  const container = document.getElementById('shoyuTable');
-  const ratio = val / shoyuData[0].b;
-  let totW = 0, totS = 0;
-  let html = '<table class="recipe-table"><thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>';
-  shoyuData.forEach(item => {
-    const w = item.b * ratio;
-    totW += w;
-    totS += w * item.s;
-    html += `<tr><td>${item.n}</td><td>${w.toFixed(1)} ${item.u}</td></tr>`;
-  });
-  html += `</tbody><tfoot><tr><td class="recipe-total">Łącznie</td><td class="recipe-total">${totW.toFixed(1)} g</td></tr></tfoot></table>`;
-  container.innerHTML = html;
+  const baseTamari = 1470;
+  const tamari = parseVal('shoyuTamari');
+  const ratio = tamari / baseTamari;
 
-  const tareSaltPct = (totS / totW) * 100;
-  const saltInBowl = 40 * (tareSaltPct / 100);
-  const finalSaltPct = (saltInBowl / (354 + 40)) * 100;
+  const items = [
+    { name: "Shiro Tamari", val: 1470 * ratio, unit: "g" },
+    { name: "Yamasa Koikuchi Shoyu", val: 200 * ratio, unit: "g" },
+    { name: "Kousyo Aojiso", val: 200 * ratio, unit: "g" },
+    { name: "Ume su", val: 50 * ratio, unit: "g" },
+    { name: "Choya", val: 150 * ratio, unit: "g" },
+    { name: "Sake", val: 200 * ratio, unit: "g" },
+    { name: "Cukier Muscovado", val: 40 * ratio, unit: "g" },
+    { name: "MSG", val: 30 * ratio, unit: "g" },
+    { name: "Niboshi Dashi 10%", val: 400 * ratio, unit: "g" },
+    { name: "Sól pomarańczowa", val: 100 * ratio, unit: "g" }
+  ];
+
+  renderTable('shoyuTable', items);
   
-  document.getElementById('shoyuBowlParams').innerHTML = `
-    <div class="highlight-title">🎯 Parametry jednej miski</div>
-    <strong>354 ml bulionu + 40 ml tare</strong><br>
-    Docelowe zasolenie: <strong>${finalSaltPct.toFixed(2)}%</strong><br>
-    Docelowa ilość soli: <strong>${saltInBowl.toFixed(3)} g</strong>
-  `;
+  const bowlHTML = `<div class="highlight-title">Parametry miski Shoyu:</div>
+  Pojemność wywaru: 350 ml<br>Ilość tare: 35 ml<br>Docelowa zasolenie miski: ~1.45%`;
+  document.getElementById('shoyuBowlParams').innerHTML = bowlHTML;
 }
 
-const misoData = [
-  {n:'Shiro Miso', b:220, u:'g'}, {n:'Saikyo Miso', b:180, u:'g'}, {n:'Ciemne Miso (Aka)', b:120, u:'g'},
-  {n:'Pieczona gruszka', b:110, u:'g'}, {n:'Sos Tsuyu', b:110, u:'g'}, {n:'Pieczony czosnek', b:60, u:'g'},
-  {n:'Czarny czosnek', b:50, u:'g'}, {n:'Muscovado', b:35, u:'g'}, {n:'Olej sezamowy', b:30, u:'g'},
-  {n:'MSG', b:25, u:'g'}, {n:'Imbir świeży', b:20, u:'g'}, {n:'Cukier trzcinowy', b:20, u:'g'},
-  {n:'Ocet gruszkowy', b:20, u:'g'}, {n:'Sansho', b:3, u:'g'}
-];
 function calculateMiso(){
-  const val = parseVal('misoShiro');
-  if(val > 0) renderTable('misoTable', misoData, 220, val);
+  const baseShiro = 220;
+  const shiro = parseVal('misoShiro');
+  const ratio = shiro / baseShiro;
+
+  const items = [
+    { name: "Saikyo Shiro Miso", val: 220 * ratio, unit: "g" },
+    { name: "Aka Miso", val: 110 * ratio, unit: "g" },
+    { name: "Shinshu Miso", val: 110 * ratio, unit: "g" },
+    { name: "Pieczona gruszka", val: 150 * ratio, unit: "g" },
+    { name: "Czarny czosnek", val: 40 * ratio, unit: "g" },
+    { name: "Sake", val: 60 * ratio, unit: "ml" },
+    { name: "Mirin", val: 60 * ratio, unit: "ml" },
+    { name: "Olej sezamowy", val: 30 * ratio, unit: "ml" },
+    { name: "Imbir", val: 20 * ratio, unit: "g" },
+    { name: "Sól", val: 15 * ratio, unit: "g" }
+  ];
+
+  renderTable('misoTable', items);
 }
 
-const sakuraData = [
-  {n:'Shiro Shoyu', b:978.7, u:'g'}, {n:'Saishikomi Shoyu, Shoda', b:150, u:'g'}, {n:'Zwykłe sake', b:360, u:'g'},
-  {n:'Sakura-sake', b:200, u:'g'}, {n:'Whisky Sakura', b:40, u:'g'},
-  {n:'Cukier', b:158, u:'g'}, {n:'Ocet wiśniowy', b:56.4, u:'g'},
-  {n:'Sól z sakury', b:35, u:'g'}, {n:'Zwykła sól', b:44, u:'g'}, {n:'MSG', b:13.5, u:'g'}
-];
 function calculateSakura(){
-  const val = parseVal('sakuraTamari');
-  if(val > 0) renderTable('sakuraTable', sakuraData, 978.7, val);
+  const baseTamari = 978.7;
+  const tamari = parseVal('sakuraTamari');
+  const ratio = tamari / baseTamari;
+
+  const items = [
+    { name: "Shiro Shoyu", val: 978.7 * ratio, unit: "g" },
+    { name: "Sake", val: 200 * ratio, unit: "g" },
+    { name: "Whisky", val: 50 * ratio, unit: "g" },
+    { name: "Kwiaty sakury (marynowane)", val: 30 * ratio, unit: "g" },
+    { name: "Sól", val: 80 * ratio, unit: "g" },
+    { name: "Cukier", val: 25 * ratio, unit: "g" },
+    { name: "MSG", val: 15 * ratio, unit: "g" }
+  ];
+
+  renderTable('sakuraTable', items);
 }
 
-const noodlesData = [
-  {n:'Nissin Seifun Toka No. 1', b:475, u:'g'},
-  {n:'Manitoba Oro (Caputo)', b:315, u:'g'},
-  {n:'Caputo Integrale (pełnoziarnista)', b:10, u:'g'},
-  {n:'Woda niskozmineralizowana', b:300, u:'ml'},
-  {n:'Kansui', b:8, u:'g'},
-  {n:'Sól kuchenna', b:12, u:'g'}
-];
 function calculateNoodles(){
-  const val = parseVal('nissinFlour');
-  if(val > 0) renderTable('noodlesTable', noodlesData, 475, val);
+  const baseFlour = 475;
+  const flour = parseVal('nissinFlour');
+  const ratio = flour / baseFlour;
+
+  const items = [
+    { name: "Mąka Nissin Seifun Toka No. 1", val: 475 * ratio, unit: "g" },
+    { name: "Mąka Manitoba", val: 250 * ratio, unit: "g" },
+    { name: "Mąka Caputo Integrale", val: 75 * ratio, unit: "g" },
+    { name: "Woda (Hydratacja 37,5%)", val: 300 * ratio, unit: "ml" },
+    { name: "Kansui (1,0%)", val: 8 * ratio, unit: "g" },
+    { name: "Sól (1,0%)", val: 8 * ratio, unit: "g" }
+  ];
+
+  renderTable('noodlesTable', items);
 }
 
-const wingsData = [
-  {n:'Sos sojowy', b:300, u:'ml'},
-  {n:'Sake', b:100, u:'ml'},
-  {n:'Ponzu', b:100, u:'ml'},
-  {n:'Olej sezamowy', b:100, u:'ml'},
-  {n:'Imbir tarty', b:1, u:'kciuk'},
-  {n:'Czosnek blend', b:1, u:'łyżka'}
-];
 function calculateWingsMarinade(){
-  const val = parseVal('soySauceWings');
-  if(val > 0) renderTable('wingsMarinadeTable', wingsData, 300, val);
+  const baseSoy = 300;
+  const soy = parseVal('soySauceWings');
+  const ratio = soy / baseSoy;
+
+  const items = [
+    { name: "Sos sojowy", val: 300 * ratio, unit: "ml" },
+    { name: "Sake", val: 150 * ratio, unit: "ml" },
+    { name: "Mirin", val: 100 * ratio, unit: "ml" },
+    { name: "Czosnek (przetarty)", val: 30 * ratio, unit: "g" },
+    { name: "Imbir (przetarty)", val: 30 * ratio, unit: "g" },
+    { name: "Olej sezamowy", val: 20 * ratio, unit: "ml" },
+    { name: "Cukier", val: 25 * ratio, unit: "g" }
+  ];
+
+  renderTable('wingsMarinadeTable', items);
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function renderTable(containerId, items){
+  let total = 0;
+  let html = `<table class="recipe-table">
+    <thead><tr><th>Składnik</th><th>Ilość</th></tr></thead><tbody>`;
+
+  items.forEach(item => {
+    html += `<tr><td>${item.name}</td><td>${item.val.toFixed(1)} ${item.unit}</td></tr>`;
+    if(item.unit === 'g' || item.unit === 'ml') total += item.val;
+  });
+
+  if(total > 0){
+    html += `<tr class="recipe-total"><td>ŁĄCZNA MASA / OBJĘTOŚĆ</td><td>${total.toFixed(1)} g/ml</td></tr>`;
+  }
+  html += `</tbody></table>`;
+
+  document.getElementById(containerId).innerHTML = html;
+}
+
+// Inicjalizacja wyliczeń przy starcie
+window.onload = function(){
   calculateShio();
   calculateOrenji();
   calculateYuzu();
@@ -609,18 +647,7 @@ window.addEventListener('DOMContentLoaded', () => {
   calculateSakura();
   calculateNoodles();
   calculateWingsMarinade();
-});
-</script>
-<script>
- if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-  const basePath = window.location.pathname.includes('/slurp-noodles-with-me') ? '/slurp-noodles-with-me' : '';
-navigator.serviceWorker.register(basePath + '/sw.js')
-
-        .then(reg => console.log('Service Worker zarejestrowany!'))
-        .catch(err => console.log('Błąd SW:', err));
-    });
-  }
+};
 </script>
 </body>
 </html>
