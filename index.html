@@ -407,9 +407,44 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
       <div class="card" onclick="showPage('kimchi', document.getElementById('btn-kimchi'))"><div class="card-icon">🌿</div><h3>Kimchi z czosnkiem niedźwiedzim</h3><p>Autorska kiszonka z uszakiem bzowym, gochugaru i nutą słodyczy.</p></div>
       <div class="card" onclick="showPage('wings', document.getElementById('btn-wings'))"><div class="card-icon">🍗</div><h3>Skrzydełka a'la KFC</h3><p>Skrzydełka w marynacie karaage, sosie kimchi i chrupiącej panierce.</p></div>
     </div>
+     <div class="card" onclick="showPage('ponzu', this)">
+        <div class="card-icon">🍋</div>
+        <h3>Sos Yuzu Ponzu</h3>
+        <p>Aromatyczny, cytrusowy sos ponzu o głębokim profilu umami (wersja restauracyjna).</p>
+          </div>
   </section>
-</main>
+    <!-- Podstrona z pełnym przepisem na Yuzu Ponzu -->
+  <section id="ponzu" class="page" style="display: none;">
+    <button class="back-btn" onclick="showPage('recipes')">← Powrót do przepisów</button>
+    
+    <h2>🍋 Sos Yuzu Ponzu — Wersja Restauracyjna (1 Litr)</h2>
+    <p class="intro">Aromatyczny, zbalansowany sos ponzu o głębokim profilu umami i cytrusowej świeżości yuzu. Idealny do sashimi, gyōzy, tataki oraz jako baza do dressingów i tare.</p>
 
+    <div class="calculator-card">
+      <h3>Składniki (na ~1 Litr)</h3>
+      <ul>
+        <li><strong>50 ml</strong> syropu z yuzu</li>
+        <li><strong>50 ml</strong> koncentratu z yuzu</li>
+        <li><strong>400 ml</strong> jasnego sosu sojowego (japoński <em>Usukuchi Shoyu</em> lub klasyczny <em>Shoyu</em>)</li>
+        <li><strong>200 ml</strong> mirinu (słodkie wino ryżowe)</li>
+        <li><strong>100 ml</strong> octu ponzu (np. żółty Otafuku)</li>
+        <li><strong>10–15 g</strong> kombu (suszone wodorosty, ok. 2–3 kawałki 5x5 cm)</li>
+        <li><strong>1–2 łyżki</strong> cukru muscovado</li>
+        <li><strong>1 łyżka</strong> cukru trzcinowego</li>
+      </ul>
+
+      <h3>Sposób przygotowania</h3>
+      <ol style="padding-left: 20px; line-height: 1.6;">
+        <li><strong>Łączenie bazy:</strong> Do garnka wlej wszystkie składniki płynne: syrop yuzu, koncentrat yuzu, sos sojowy, mirin oraz ocet ponzu.</li>
+        <li><strong>Dodanie umami i słodyczy:</strong> Włóż do garnka kawałki kombu oraz dodaj cukier muscovado i cukier trzcinowy. Całość wymieszaj.</li>
+        <li><strong>Maceracja na ciepło:</strong> Podgrzewaj na bardzo małym ogniu przez kilka minut. <em>Nie doprowadzaj do wrzenia!</em></li>
+        <li><strong>Ekstrakcja smaku:</strong> Zdejmij garnek z ognia i odstaw do ostygnięcia na 30–60 minut.</li>
+        <li><strong>Filtrowanie:</strong> Wyjmij kombu, a sos przecedź przez gęste sitko lub gazę do wyparzonej butelki.</li>
+        <li><strong>Dojrzewanie:</strong> Przechowuj w lodówce. Pełny profil smakowy osiąga po 24 godzinach.</li>
+      </ol>
+    </div>
+  </section>
+  </main>
 <footer>
   SLURP NOODLES WITH ME — RAMEN LAB & SUSHI CATERING<br>© 2026 Marcin Bogdan
 </footer>
@@ -418,8 +453,7 @@ function showPage(pageId, btn){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const target = document.getElementById(pageId);
   if(target) target.classList.add('active');
-
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+ document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   if(btn){
     btn.classList.add('active');
   } else {
