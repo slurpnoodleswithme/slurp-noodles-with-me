@@ -366,19 +366,14 @@ footer{text-align:center;border-top:1px solid var(--border);padding:30px 20px 10
     <p class="intro">Aromatyczny, zbalansowany sos ponzu o głębokim profilu umami i cytrusowej świeżości yuzu. Idealny do sashimi, gyōzy, tataki oraz jako baza do dressingów i tare.</p>
 
     <div class="lab-card">
-      <h3>Składniki (na ~1 Litr)</h3>
-      <ul style="color: #ccc; line-height: 1.8; padding-left: 20px;">
-        <li><strong>50 ml</strong> syropu z yuzu</li>
-        <li><strong>50 ml</strong> koncentratu z yuzu</li>
-        <li><strong>400 ml</strong> jasnego sosu sojowego (japoński <em>Usukuchi Shoyu</em> lub klasyczny <em>Shoyu</em>)</li>
-        <li><strong>200 ml</strong> mirinu (słodkie wino ryżowe)</li>
-        <li><strong>100 ml</strong> octu ponzu (np. żółty Otafuku)</li>
-        <li><strong>10–15 g</strong> kombu (suszone wodorosty, ok. 2–3 kawałki 5x5 cm)</li>
-        <li><strong>1–2 łyżki</strong> cukru muscovado</li>
-        <li><strong>1 łyżka</strong> cukru trzcinowego</li>
-      </ul>
+      <h2>Skalowanie receptury</h2>
+      <div class="scale-box">
+        <div class="field"><label>Syrop z yuzu — ml</label><input id="ponzuSyrup" type="text" value="50"></div>
+        <button class="calculate" onclick="calculatePonzu()">PRZELICZ</button>
+      </div>
+      <div id="ponzuTable"></div>
 
-      <h3 style="margin-top: 25px;">Sposób przygotowania</h3>
+      <h3 style="margin-top: 30px;">Sposób przygotowania</h3>
       <ol style="color: #ccc; line-height: 1.8; padding-left: 20px;">
         <li><strong>Łączenie bazy:</strong> Do garnka wlej wszystkie składniki płynne: syrop yuzu, koncentrat yuzu, sos sojowy, mirin oraz ocet ponzu.</li>
         <li><strong>Dodanie umami i słodyczy:</strong> Włóż do garnka kawałki kombu oraz dodaj cukier muscovado i cukier trzcinowy. Całość wymieszaj.</li>
@@ -619,6 +614,25 @@ function calculateWingsMarinade(){
   renderTable('wingsMarinadeTable', items);
 }
 
+function calculatePonzu(){
+  const baseSyrup = 50;
+  const syrup = parseVal('ponzuSyrup');
+  const ratio = syrup / baseSyrup;
+
+  const items = [
+    { name: "Syrop z yuzu", val: 50 * ratio, unit: "ml" },
+    { name: "Koncentrat yuzu", val: 50 * ratio, unit: "ml" },
+    { name: "Jasny sos sojowy (Shoyu)", val: 400 * ratio, unit: "ml" },
+    { name: "Mirin", val: 200 * ratio, unit: "ml" },
+    { name: "Ocet ponzu (np. Otafuku)", val: 100 * ratio, unit: "ml" },
+    { name: "Kombu", val: 12.5 * ratio, unit: "g" },
+    { name: "Cukier muscovado", val: 15 * ratio, unit: "g" },
+    { name: "Cukier trzcinowy", val: 15 * ratio, unit: "g" }
+  ];
+
+  renderTable('ponzuTable', items);
+}
+
 function renderTable(containerId, items){
   let total = 0;
   let html = `<table class="recipe-table">
@@ -647,6 +661,7 @@ window.onload = function(){
   calculateSakura();
   calculateNoodles();
   calculateWingsMarinade();
+  calculatePonzu();
 };
 </script>
 </body>
